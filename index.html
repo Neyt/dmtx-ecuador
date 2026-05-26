@@ -227,6 +227,73 @@ footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.07);pa
 
 /* DIVIDER */
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(14,122,128,0.4),transparent);margin:0}
+
+/* LEGAL TABS */
+.legal-tabs-section{background:var(--navy2)}
+.tabs-nav{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:3rem;overflow-x:auto}
+.tab-btn{padding:1rem 1.75rem;background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.45);font-family:'Inter',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;white-space:nowrap;margin-bottom:-1px}
+.tab-btn:hover{color:rgba(255,255,255,0.75)}
+.tab-btn.active{color:var(--teal3);border-bottom-color:var(--teal3)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* Hitos */
+.hitos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.hito-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden}
+.hito-card:hover{border-color:rgba(14,122,128,0.4);transform:translateY(-3px)}
+.hito-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.hito-card.hito-legal::before{background:var(--teal2)}
+.hito-card.hito-clinico::before{background:var(--gold)}
+.hito-card.hito-operativo::before{background:#3498DB}
+.hito-card.hito-expansion::before{background:#2ECC71}
+.hito-period{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--teal3);margin-bottom:0.5rem}
+.hito-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:0.75rem}
+.hito-items{list-style:none}
+.hito-items li{font-size:0.82rem;color:rgba(255,255,255,0.55);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:0.5rem;align-items:baseline}
+.hito-items li::before{content:'✓';color:var(--teal3);font-size:0.7rem;flex-shrink:0}
+.hito-items li.pending::before{content:'○';color:var(--gold)}
+.hito-badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.2rem 0.65rem;border-radius:100px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.75rem}
+.hito-badge.urgente{background:rgba(201,148,26,0.15);border:1px solid rgba(201,148,26,0.3);color:var(--gold)}
+.hito-badge.critico{background:rgba(224,82,82,0.12);border:1px solid rgba(224,82,82,0.3);color:#E05252}
+.hito-badge.ok{background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.3);color:#2ECC71}
+
+/* Ruta Legal */
+.ruta-steps{display:flex;flex-direction:column;gap:0}
+.ruta-step{display:grid;grid-template-columns:auto 1fr;gap:2rem;position:relative}
+.ruta-step:not(:last-child)::after{content:'';position:absolute;left:1.5rem;top:3rem;bottom:-1rem;width:1px;background:linear-gradient(180deg,rgba(14,122,128,0.5),rgba(14,122,128,0.1))}
+.ruta-num{width:3rem;height:3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;flex-shrink:0;position:relative;z-index:1}
+.ruta-num.step-legal{background:rgba(10,92,97,0.25);border:1px solid var(--teal2);color:var(--teal3)}
+.ruta-num.step-admin{background:rgba(201,148,26,0.15);border:1px solid rgba(201,148,26,0.4);color:var(--gold)}
+.ruta-num.step-salud{background:rgba(52,152,219,0.15);border:1px solid rgba(52,152,219,0.4);color:#5DADE2}
+.ruta-num.step-indigena{background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.35);color:#2ECC71}
+.ruta-body{padding:0.5rem 0 2.5rem}
+.ruta-step-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:0.4rem}
+.ruta-step-entity{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--teal3);margin-bottom:0.75rem}
+.ruta-step-desc{font-size:0.875rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:0.75rem}
+.ruta-step-docs{display:flex;flex-wrap:wrap;gap:0.4rem}
+.doc-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:0.2rem 0.65rem;border-radius:2px;font-size:0.7rem;color:rgba(255,255,255,0.45)}
+.ruta-step-time{font-size:0.72rem;color:var(--gold);margin-top:0.5rem}
+
+/* Códigos Legales */
+.codigos-intro{font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2.5rem;padding:1.5rem;background:rgba(10,92,97,0.1);border-left:3px solid var(--teal2);border-radius:0 4px 4px 0}
+.codigos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.codigo-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.75rem;transition:all 0.3s}
+.codigo-card:hover{border-color:rgba(14,122,128,0.4);background:rgba(10,92,97,0.08)}
+.codigo-tag{display:inline-flex;padding:0.25rem 0.75rem;border-radius:2px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.85rem}
+.codigo-tag.constitucional{background:rgba(201,148,26,0.15);color:var(--gold);border:1px solid rgba(201,148,26,0.3)}
+.codigo-tag.ley{background:rgba(14,122,128,0.15);color:var(--teal3);border:1px solid rgba(14,122,128,0.3)}
+.codigo-tag.internacional{background:rgba(52,152,219,0.12);color:#5DADE2;border:1px solid rgba(52,152,219,0.3)}
+.codigo-tag.reglamento{background:rgba(46,204,113,0.1);color:#2ECC71;border:1px solid rgba(46,204,113,0.25)}
+.codigo-tag.penal{background:rgba(224,82,82,0.1);color:#E87070;border:1px solid rgba(224,82,82,0.25)}
+.codigo-ref{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:0.5rem;color:var(--white)}
+.codigo-articulo{font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem}
+.codigo-texto{font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:0.85rem;font-style:italic}
+.codigo-aplicacion{font-size:0.8rem;color:rgba(255,255,255,0.65);line-height:1.6;border-top:1px solid rgba(255,255,255,0.07);padding-top:0.75rem}
+.codigo-aplicacion strong{color:var(--teal3)}
+.risk-alert{background:rgba(224,82,82,0.08);border:1px solid rgba(224,82,82,0.2);border-radius:4px;padding:1.25rem 1.5rem;margin-top:2rem;display:flex;gap:1rem;align-items:flex-start}
+.risk-icon{font-size:1.2rem;flex-shrink:0;margin-top:0.1rem}
+.risk-text{font-size:0.82rem;color:rgba(255,200,200,0.7);line-height:1.7}
+.risk-text strong{color:rgba(255,150,150,0.9)}
 </style>
 </head>
 <body>
@@ -240,6 +307,7 @@ footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.07);pa
     <li><a href="#team">Equipo</a></li>
     <li><a href="#financials">Finanzas</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#legal">Marco Legal</a></li>
   </ul>
   <a href="#cta" class="nav-cta">Contacto</a>
 </nav>
@@ -636,6 +704,279 @@ footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.07);pa
 
 <div class="divider"></div>
 
+<div class="divider"></div>
+
+<!-- MARCO LEGAL / HITOS -->
+<section class="legal-tabs-section" id="legal">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Cumplimiento Regulatorio</div>
+      <h2 class="section-title">Marco Legal & <em>Hitos a Alcanzar</em></h2>
+      <p class="section-body" style="margin-bottom:2.5rem">Ecuador cuenta con un entorno constitucional y legal único que permite operar programas de medicina ancestral con ayahuasca bajo un esquema de cumplimiento estructurado. Aquí están los hitos críticos, la ruta de permisos y los códigos que nos amparan.</p>
+    </div>
+
+    <!-- TAB NAV -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="showTab('hitos',this)">🎯 Hitos del Proyecto</button>
+      <button class="tab-btn" onclick="showTab('ruta',this)">📋 Ruta de Permisos</button>
+      <button class="tab-btn" onclick="showTab('codigos',this)">⚖️ Códigos Legales</button>
+    </div>
+
+    <!-- TAB 1: HITOS -->
+    <div class="tab-pane active" id="tab-hitos">
+      <div class="hitos-grid stagger">
+
+        <div class="hito-card hito-legal">
+          <div class="hito-period">Mes 0–1 · Fundacional</div>
+          <div class="hito-title">Constitución Legal</div>
+          <ul class="hito-items">
+            <li>Constituir SAS, Fundación o CIA. LTDA. ante Notaría</li>
+            <li>Registro en Superintendencia de Compañías (SUPERCIAS)</li>
+            <li>Obtener RUC en el SRI</li>
+            <li>Abrir cuenta bancaria empresarial</li>
+            <li>Contratar abogado especialista en salud & derecho indígena</li>
+          </ul>
+          <span class="hito-badge critico">● Crítico · Pre-requisito</span>
+        </div>
+
+        <div class="hito-card hito-legal">
+          <div class="hito-period">Mes 1–2 · Regulatorio</div>
+          <div class="hito-title">Habilitación Sanitaria</div>
+          <ul class="hito-items">
+            <li>Solicitud de habilitación ante MSP (Ministerio de Salud)</li>
+            <li>Registro en ARCSA como establecimiento de salud</li>
+            <li>Certificación de predio y condiciones físicas</li>
+            <li>Registro de profesionales de salud habilitados (SENESCYT)</li>
+            <li>Protocolos de seguridad clínica documentados</li>
+          </ul>
+          <span class="hito-badge critico">● Crítico · ARCSA + MSP</span>
+        </div>
+
+        <div class="hito-card hito-clinico">
+          <div class="hito-period">Mes 2–3 · Alianzas</div>
+          <div class="hito-title">Acuerdos con Comunidades Indígenas</div>
+          <ul class="hito-items">
+            <li>Acuerdo formal con comunidad Kichwa o Shuar certificada</li>
+            <li>Designación del chamán / guía espiritual como responsable ceremonial</li>
+            <li>Convenio de respeto a protocolos ancestrales y propiedad intelectual</li>
+            <li>Registro ante CODENPE o CONAIE si corresponde</li>
+            <li>Carta de presentación como práctica intercultural</li>
+          </ul>
+          <span class="hito-badge urgente">◐ Urgente · Protección legal clave</span>
+        </div>
+
+        <div class="hito-card hito-clinico">
+          <div class="hito-period">Mes 2–4 · Fiscalización</div>
+          <div class="hito-title">Notificación a SETED / Fiscalía</div>
+          <ul class="hito-items">
+            <li>Notificación preventiva a SETED (ex-CONSEP) sobre actividad</li>
+            <li>Diferenciación explícita: uso ritual ≠ tráfico ilícito (Art. 220 COIP)</li>
+            <li>Opinión jurídica escrita de fiscal especializado</li>
+            <li>Acuerdo de cooperación con autoridades locales</li>
+            <li class="pending">Posible precedente judicial de amparo constitucional</li>
+          </ul>
+          <span class="hito-badge urgente">◐ Urgente · Blindaje penal</span>
+        </div>
+
+        <div class="hito-card hito-operativo">
+          <div class="hito-period">Mes 3–5 · Operativo</div>
+          <div class="hito-title">Lanzamiento Regulado</div>
+          <ul class="hito-items">
+            <li>Reglamento interno del centro aprobado</li>
+            <li>Formularios de consentimiento informado revisados por abogado</li>
+            <li>Seguro de responsabilidad civil para el centro</li>
+            <li>Protocolo de emergencias médicas homologado con clínica local</li>
+            <li>Primeras cohortes piloto con documentación completa</li>
+          </ul>
+          <span class="hito-badge ok">✓ Procesal · Pre-apertura</span>
+        </div>
+
+        <div class="hito-card hito-expansion">
+          <div class="hito-period">Mes 6–18 · Consolidación</div>
+          <div class="hito-title">Legitimación Institucional</div>
+          <ul class="hito-items">
+            <li>Publicación de resultados en medio académico o técnico</li>
+            <li>Convenio con universidad ecuatoriana para seguimiento</li>
+            <li>Adhesión a red latinoamericana de medicina psicodélica</li>
+            <li class="pending">Lobby para regulación específica en Asamblea Nacional</li>
+            <li class="pending">Certificación internacional MAPS o equivalente</li>
+          </ul>
+          <span class="hito-badge ok">✓ Estratégico · Largo plazo</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: RUTA DE PERMISOS -->
+    <div class="tab-pane" id="tab-ruta">
+      <div class="ruta-steps">
+
+        <div class="ruta-step">
+          <div class="ruta-num step-legal">1</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Constitución de la Persona Jurídica</div>
+            <div class="ruta-step-entity">Notaría Pública → SUPERCIAS → SRI</div>
+            <div class="ruta-step-desc">Registrar la empresa o fundación que operará el centro. Se recomienda una <strong>Fundación sin fines de lucro</strong> con objeto social en "medicina integrativa y saberes ancestrales", lo que facilita acceso a convenios con el MSP y protección bajo el marco de medicina tradicional. Alternativamente, una SAS con objeto en "servicios de salud integrativa y bienestar".</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Escritura pública</span><span class="doc-tag">Estatutos aprobados</span><span class="doc-tag">RUC activo</span><span class="doc-tag">Representante legal</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración estimada: 2–4 semanas · Costo: $800–$1,500</div>
+          </div>
+        </div>
+
+        <div class="ruta-step">
+          <div class="ruta-num step-salud">2</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Habilitación del Establecimiento de Salud</div>
+            <div class="ruta-step-entity">MSP — Dirección de Calidad de los Servicios de Salud</div>
+            <div class="ruta-step-desc">Toda entidad que preste servicios de salud en Ecuador debe estar habilitada por el MSP según el <em>Reglamento Sustitutivo de Habilitación de Establecimientos de Salud</em> (Acuerdo Ministerial 00000545). El centro DmtX se registraría como <strong>"Casa de Salud Intercultural / Centro de Medicina Alternativa"</strong> bajo la categoría de prácticas terapéuticas no convencionales.</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Planos del establecimiento</span><span class="doc-tag">Manual de procesos</span><span class="doc-tag">Hoja de vida profesionales</span><span class="doc-tag">Protocolos clínicos</span><span class="doc-tag">Equipamiento certificado</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración estimada: 4–8 semanas · Costo: $300–$600 (tasas)</div>
+          </div>
+        </div>
+
+        <div class="ruta-step">
+          <div class="ruta-num step-salud">3</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Registro de Profesionales de Salud (SENESCYT)</div>
+            <div class="ruta-step-entity">Secretaría de Educación Superior, Ciencia, Tecnología e Innovación</div>
+            <div class="ruta-step-desc">Todo médico, psicólogo o terapeuta que trabaje en el centro debe tener su título registrado en SENESCYT. El psiquiatra responsable médico y el psicólogo clínico son indispensables. Para los facilitadores chamánicos, se gestiona reconocimiento como <strong>sabio ancestral certificado</strong> ante la comunidad indígena respectiva.</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Títulos universitarios apostillados</span><span class="doc-tag">Registro SENESCYT</span><span class="doc-tag">Certificado de práctica</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración: continua · Sin costo si títulos ya registrados</div>
+          </div>
+        </div>
+
+        <div class="ruta-step">
+          <div class="ruta-num step-indigena">4</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Convenio con Comunidad Indígena Certificada</div>
+            <div class="ruta-step-entity">CONAIE / CODENPE / Comunidad Kichwa o Shuar</div>
+            <div class="ruta-step-desc">El elemento <strong>más protector legalmente</strong>: operar bajo un convenio formal con una comunidad indígena reconocida ampara la actividad bajo el Art. 57 de la Constitución (derechos colectivos y saberes ancestrales). El guía espiritual debe ser miembro certificado de una comunidad, no un facilitador independiente, para activar esta protección constitucional.</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Convenio firmado ante notario</span><span class="doc-tag">Aval de autoridad comunal</span><span class="doc-tag">Reconocimiento CONAIE</span><span class="doc-tag">Protocolo intercultural</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración: 4–12 semanas (negociación cultural) · Costo: simbólico + participación</div>
+          </div>
+        </div>
+
+        <div class="ruta-step">
+          <div class="ruta-num step-admin">5</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Notificación a SETED y Opinión Fiscal</div>
+            <div class="ruta-step-entity">SETED (ex-CONSEP) + Fiscalía General del Estado</div>
+            <div class="ruta-step-desc">Aunque la ayahuasca no está listada nominalmente como sustancia sujeta a fiscalización (el DMT sintético sí lo está), una notificación preventiva ante la SETED y una opinión jurídica escrita de la Fiscalía Regional generan un <strong>blindaje procesal</strong> que diferencia el uso ritual del tráfico ilícito tipificado en el Art. 220 del COIP. No existe un procedimiento formal estándar: se gestiona como consulta administrativa.</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Memoria descriptiva del programa</span><span class="doc-tag">Opinión jurídica firmada</span><span class="doc-tag">Convenio indígena adjunto</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración: 4–8 semanas · Costo: honorarios abogado $1,500–$3,000</div>
+          </div>
+        </div>
+
+        <div class="ruta-step">
+          <div class="ruta-num step-legal">6</div>
+          <div class="ruta-body">
+            <div class="ruta-step-title">Registros Complementarios y Seguros</div>
+            <div class="ruta-step-entity">GAD Municipal · IESS · Aseguradoras privadas</div>
+            <div class="ruta-step-desc">Permiso de funcionamiento del GAD municipal (patente), registro en el IESS para afiliación de empleados, seguro de responsabilidad civil del establecimiento, y póliza de asistencia médica de emergencia. Estos registros formalizan la operación ante las autoridades locales y reducen el riesgo operativo.</div>
+            <div class="ruta-step-docs">
+              <span class="doc-tag">Patente municipal</span><span class="doc-tag">Permiso bomberos</span><span class="doc-tag">Seguro RC</span><span class="doc-tag">Afiliación IESS</span>
+            </div>
+            <div class="ruta-step-time">⏱ Duración: 2–3 semanas · Costo: $500–$1,200/año</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 3: CÓDIGOS LEGALES -->
+    <div class="tab-pane" id="tab-codigos">
+      <div class="codigos-intro">
+        Ecuador es uno de los pocos países del mundo con una <strong>Constitución explícitamente plurinacional e intercultural</strong> (2008) que eleva los saberes ancestrales y la medicina tradicional a rango de derecho constitucional. A diferencia de Colombia, Perú o México donde la regulación de plantas sagradas es ambigua o restrictiva, Ecuador ofrece una base jurídica sólida para operar bajo el marco de interculturalidad en salud, siempre que se cumplan los requisitos formales de habilitación y se trabaje con comunidades indígenas reconocidas.
+      </div>
+
+      <div class="codigos-grid stagger">
+
+        <div class="codigo-card">
+          <span class="codigo-tag constitucional">Constitucional</span>
+          <div class="codigo-ref">Constitución del Ecuador — Art. 57</div>
+          <div class="codigo-articulo">Derechos Colectivos de Pueblos Indígenas · 2008</div>
+          <div class="codigo-texto">"Se reconoce y garantizará a las comunas, comunidades, pueblos y nacionalidades indígenas el derecho a mantener, proteger y desarrollar los conocimientos colectivos; sus ciencias, tecnologías y saberes ancestrales; los recursos genéticos que contienen la diversidad biológica y la agrobiodiversidad; sus medicinas y prácticas medicinales..."</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> Protege directamente el uso de ayahuasca como práctica medicinal ancestral cuando es conducida por miembros de comunidades indígenas reconocidas. Es el fundamento constitucional más sólido del proyecto.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag constitucional">Constitucional</span>
+          <div class="codigo-ref">Constitución del Ecuador — Art. 32</div>
+          <div class="codigo-articulo">Derecho a la Salud · 2008</div>
+          <div class="codigo-texto">"La salud es un derecho que garantiza el Estado... La prestación de los servicios de salud se regirá por los principios de equidad, universalidad, solidaridad, interculturalidad, calidad, eficiencia, eficacia, precaución y bioética, con enfoque de género y generacional."</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> El principio de <strong>interculturalidad</strong> explícito en el derecho a la salud abre la puerta a prácticas médicas no convencionales que integren saberes ancestrales, justificando la habilitación del centro ante el MSP bajo este marco.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag ley">Ley Orgánica</span>
+          <div class="codigo-ref">Ley Orgánica de Salud — Arts. 189–195</div>
+          <div class="codigo-articulo">Medicina Ancestral y Alternativa · Registro Oficial 423, 2006</div>
+          <div class="codigo-texto">"El Estado reconoce como recurso terapéutico válido a la medicina tradicional y a las medicinas alternativas y reconoce y protege el ejercicio de la medicina ancestral como parte de la interculturalidad en salud, de acuerdo con la ley."</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> Base legal para la habilitación del establecimiento como centro de medicina alternativa / intercultural. Permite la prestación de servicios terapéuticos con plantas sagradas bajo supervisión médica y dentro de un marco formal.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag reglamento">Acuerdo Ministerial</span>
+          <div class="codigo-ref">Acuerdo Ministerial MSP Nº 00000696</div>
+          <div class="codigo-articulo">Regulación de Medicina Alternativa y Complementaria · 2013</div>
+          <div class="codigo-texto">Define las modalidades reconocidas de medicina alternativa en Ecuador, incluyendo fitoterapia, medicina antroposófica, homeopatía, naturopatía y otras terapias complementarias. Establece requisitos de habilitación para establecimientos que ofrezcan estas prácticas.</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> El programa DmtX califica como <strong>fitoterapia ceremonial supervisada</strong> bajo este acuerdo. Permite habilitar el centro ante el MSP/ARCSA sin necesidad de regulación específica para psicodélicos, usando el marco de medicina complementaria intercultural.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag internacional">Derecho Internacional</span>
+          <div class="codigo-ref">Convenio 169 OIT — Arts. 24–25</div>
+          <div class="codigo-articulo">Pueblos Indígenas y Tribales · Ratificado por Ecuador 1998</div>
+          <div class="codigo-texto">"Los servicios de salud para los pueblos interesados deberán organizarse, en la medida de lo posible, a nivel comunitario. Estos servicios deberán planearse y administrarse en cooperación con los pueblos interesados y tener en cuenta sus condiciones económicas, geográficas, sociales y culturales, así como sus métodos de prevención, prácticas curativas y medicamentos tradicionales."</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> Tratado internacional ratificado que obliga al Estado ecuatoriano a reconocer y preservar los sistemas médicos indígenas, incluyendo el uso ceremonial de plantas sagradas. En caso de acción judicial, tiene jerarquía normativa superior a leyes ordinarias.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag internacional">ONU / Derechos Indígenas</span>
+          <div class="codigo-ref">Declaración de la ONU sobre Derechos Indígenas — Art. 31</div>
+          <div class="codigo-articulo">Adoptada por Ecuador · 2007</div>
+          <div class="codigo-texto">"Los pueblos indígenas tienen derecho a mantener, controlar, proteger y desarrollar su patrimonio cultural, sus conocimientos tradicionales, sus expresiones culturales tradicionales y las manifestaciones de sus ciencias, tecnologías y culturas, comprendidos los recursos humanos y genéticos, las semillas, las medicinas, el conocimiento de las propiedades de la fauna y la flora..."</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> Refuerza el Convenio 169 en sede internacional. Protege el conocimiento ancestral de las prácticas con ayahuasca como patrimonio intangible de las naciones indígenas. Relevante en caso de litigio internacional o presión regulatoria.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag reglamento">Reglamento</span>
+          <div class="codigo-ref">Reglamento de Habilitación de Establecimientos de Salud</div>
+          <div class="codigo-articulo">Acuerdo Ministerial 00000545 · MSP 2015</div>
+          <div class="codigo-texto">Establece los tipos, categorías y requisitos técnicos para la habilitación de establecimientos de salud en Ecuador. Incluye centros de salud tipo ambulatorio, clínicas de especialidad, casas de salud y centros de medicina alternativa y complementaria.</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> Guía operativa para registrar el centro. Se recomienda la categoría <strong>"Casa de Salud Intercultural"</strong> o <strong>"Centro de Terapias Complementarias"</strong>, que requieren: médico responsable, psicólogo clínico, protocolo de emergencias y convenio con hospital de referencia.</div>
+        </div>
+
+        <div class="codigo-card">
+          <span class="codigo-tag penal">Marco Penal · Excepción</span>
+          <div class="codigo-ref">COIP — Art. 220 + Excepción Ritual</div>
+          <div class="codigo-articulo">Código Orgánico Integral Penal · 2014</div>
+          <div class="codigo-texto">Art. 220 tipifica el tráfico de sustancias catalogadas. Sin embargo, la ayahuasca como preparación vegetal tradicional <strong>no figura en las tablas de sustancias fiscalizadas del SETED</strong> (a diferencia del DMT sintético puro, que sí está en Tabla I). La jurisprudencia constitucional y el criterio del Convenio 169 OIT crean una excepción de facto para el uso ritual indígena.</div>
+          <div class="codigo-aplicacion"><strong>Aplicación DmtX:</strong> El riesgo penal existe pero se mitiga con: (1) convenio indígena formal, (2) opinión jurídica escrita, (3) notificación SETED, (4) habilitación MSP activa, y (5) operar como práctica intercultural —no como "tratamiento con DMT". <strong>Nunca mencionar DMT en documentos públicos; usar "preparación vegetal ancestral" o "ayahuasca".</strong></div>
+        </div>
+
+      </div>
+
+      <div class="risk-alert">
+        <div class="risk-icon">⚠️</div>
+        <div class="risk-text">
+          <strong>Zona de Riesgo Legal Residual:</strong> A la fecha no existe una regulación específica para terapia con ayahuasca en Ecuador. El marco legal descrito es una interpretación jurídica sólida pero no un permiso explícito. Se recomienda contar con asesoría de un abogado especializado en derecho indígena y salud pública antes de iniciar operaciones, y mantener documentación completa de cada sesión incluyendo consentimiento informado, evaluación psiquiátrica previa y seguimiento post-ceremonia. La protección legal más sólida proviene del convenio indígena formal + habilitación MSP activa + no comercializar como "droga" ni "tratamiento médico convencional".
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="container">
@@ -707,6 +1048,20 @@ const kpiObs=new IntersectionObserver(entries=>{
   });
 },{threshold:0.5});
 document.querySelectorAll('.kpi-card').forEach(el=>kpiObs.observe(el));
+
+// Tab switching
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  // Re-trigger stagger animations in the revealed tab
+  const stagger = document.getElementById('tab-' + id).querySelector('.stagger');
+  if (stagger) {
+    stagger.classList.remove('visible');
+    setTimeout(() => stagger.classList.add('visible'), 50);
+  }
+}
 </script>
 </body>
 </html>
