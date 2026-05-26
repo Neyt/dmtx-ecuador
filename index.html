@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DmtX Ecuador — Medicina Integrativa Psicodélica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0B1D2E;--navy2:#112234;--teal:#0A5C61;--teal2:#0E7A80;--teal3:#12979E;
+  --gold:#C9941A;--gold2:#E5AA1E;--cream:#F6F0E8;--cream2:#EDE5D8;
+  --text:#1A1A2E;--muted:#6B7280;--white:#FFFFFF;
+  --gradient:linear-gradient(135deg,#0B1D2E 0%,#0A3D45 50%,#0B1D2E 100%);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#0B1D2E}::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(11,29,46,0.85);border-bottom:1px solid rgba(14,122,128,0.2);transition:all 0.3s}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:0.1em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--teal2);color:var(--white);padding:0.5rem 1.25rem;border-radius:2px;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.nav-cta:hover{background:var(--gold);color:var(--navy)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--gradient)}
+.hero-bg{position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="%230A5C61" stop-opacity="0.3"/><stop offset="100%" stop-color="transparent"/></radialGradient><radialGradient id="g2" cx="80%" cy="70%"><stop offset="0%" stop-color="%23C9941A" stop-opacity="0.12"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="1440" height="900" fill="url(%23g1)"/><rect width="1440" height="900" fill="url(%23g2)"/></svg>') center/cover;pointer-events:none}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(14,122,128,0.2);border:1px solid rgba(14,122,128,0.4);padding:0.4rem 1rem;border-radius:100px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal3);margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--teal3);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.01em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-subtitle{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:2.5rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--teal2),var(--teal3));color:var(--white);padding:0.9rem 2rem;border-radius:2px;font-size:0.9rem;letter-spacing:0.06em;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;text-transform:uppercase}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(14,122,128,0.4)}
+.btn-ghost{background:transparent;color:var(--white);padding:0.9rem 2rem;border-radius:2px;font-size:0.9rem;letter-spacing:0.06em;text-decoration:none;transition:all 0.3s;border:1px solid rgba(255,255,255,0.25);text-transform:uppercase}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem;backdrop-filter:blur(10px);transition:all 0.3s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal2),var(--gold))}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(14,122,128,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.25rem}
+.scroll-indicator{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.3))}
+
+/* SECTIONS */
+section{padding:6rem 0;position:relative}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section-label{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal3);margin-bottom:1rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-body{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.65);max-width:620px;font-weight:300}
+
+/* ABOUT */
+.about{background:var(--navy2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.pillar{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.25rem;transition:all 0.3s}
+.pillar:hover{border-color:rgba(14,122,128,0.4);background:rgba(14,122,128,0.08)}
+.pillar-icon{font-size:1.25rem;margin-bottom:0.5rem}
+.pillar-name{font-size:0.8rem;font-weight:500;color:rgba(255,255,255,0.85);letter-spacing:0.04em}
+.legal-block{background:rgba(10,92,97,0.15);border:1px solid rgba(10,92,97,0.3);border-radius:4px;padding:2rem}
+.legal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal3);margin-bottom:1.25rem}
+.legal-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+.legal-icon{width:20px;height:20px;background:rgba(14,122,128,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;margin-top:0.1rem;color:var(--teal3)}
+.legal-text{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6}
+
+/* PROTOCOL */
+.protocol{background:var(--navy)}
+.phases-timeline{position:relative;margin-top:3rem}
+.phases-timeline::before{content:'';position:absolute;left:2.5rem;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--teal2),var(--gold),var(--teal2),transparent)}
+.phase-item{display:flex;gap:2rem;margin-bottom:3rem;position:relative}
+.phase-num{width:5rem;height:5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;border:1px solid;position:relative;z-index:1}
+.phase-num.prep{background:rgba(10,92,97,0.2);border-color:var(--teal2);color:var(--teal3)}
+.phase-num.ceremony{background:rgba(201,148,26,0.15);border-color:var(--gold);color:var(--gold)}
+.phase-num.integration{background:rgba(18,151,158,0.15);border-color:var(--teal3);color:var(--teal3)}
+.phase-content{padding-top:0.75rem}
+.phase-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.4rem;color:var(--white)}
+.phase-subtitle{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--teal3);margin-bottom:0.75rem}
+.phase-body{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7}
+.phase-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
+.phase-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.2rem 0.7rem;font-size:0.7rem;color:rgba(255,255,255,0.5)}
+
+/* TEAM */
+.team{background:var(--navy2)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.team-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:2rem;transition:all 0.4s;position:relative;overflow:hidden}
+.team-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal2),transparent);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.team-card:hover{transform:translateY(-6px);border-color:rgba(14,122,128,0.35);box-shadow:0 25px 60px rgba(0,0,0,0.4)}
+.team-card:hover::after{transform:scaleX(1)}
+.team-role{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--teal3);margin-bottom:0.75rem}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:0.5rem}
+.team-desc{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:1.25rem}
+.team-salary{display:flex;align-items:center;gap:0.5rem}
+.salary-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold)}
+.salary-label{font-size:0.7rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;line-height:1.3}
+
+/* SAFETY */
+.safety{background:var(--navy)}
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
+.safety-block{padding:2rem;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px}
+.safety-block-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem}
+.safety-block-title span{font-size:1rem}
+.safety-list{list-style:none}
+.safety-list li{font-size:0.875rem;color:rgba(255,255,255,0.6);padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:0.75rem;align-items:baseline}
+.safety-list li::before{content:'—';color:var(--teal3);flex-shrink:0}
+.safety-list li.excluded::before{content:'—';color:#E05252}
+.safety-list li.excluded{color:rgba(255,100,100,0.7)}
+
+/* FINANCIALS */
+.financials{background:var(--navy2)}
+.fin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem}
+.kpi-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.75rem;text-align:center;position:relative;overflow:hidden;transition:all 0.3s}
+.kpi-card:hover{transform:translateY(-4px)}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi-card.teal::before{background:var(--teal2)}
+.kpi-card.gold::before{background:var(--gold)}
+.kpi-card.green::before{background:#2ECC71}
+.kpi-card.blue::before{background:#3498DB}
+.kpi-value{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1;margin-bottom:0.4rem}
+.kpi-value.positive{color:var(--teal3)}
+.kpi-value.gold{color:var(--gold)}
+.kpi-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.scenario-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:2rem;transition:all 0.3s}
+.scenario-card.featured{background:rgba(10,92,97,0.15);border-color:var(--teal2)}
+.scenario-card:hover{border-color:rgba(14,122,128,0.35)}
+.scenario-year{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--teal3);margin-bottom:0.75rem}
+.scenario-rev{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--white);margin-bottom:0.25rem}
+.scenario-pax{font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:1.25rem}
+.scenario-items{list-style:none}
+.scenario-items li{font-size:0.8rem;color:rgba(255,255,255,0.55);padding:0.4rem 0;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between}
+.scenario-items li span:last-child{color:var(--teal3)}
+.scenario-items li.positive span:last-child{color:#2ECC71}
+.scenario-items li.negative span:last-child{color:#E74C3C}
+
+/* ROADMAP */
+.roadmap{background:var(--navy)}
+.timeline{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.timeline-phase{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.timeline-phase::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--teal2)}
+.timeline-phase:nth-child(2n)::before{background:var(--gold)}
+.timeline-phase:hover{transform:translateY(-4px);border-color:rgba(14,122,128,0.3)}
+.timeline-period{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--teal3);margin-bottom:0.75rem}
+.timeline-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:1rem}
+.timeline-tasks{list-style:none}
+.timeline-tasks li{font-size:0.82rem;color:rgba(255,255,255,0.55);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:0.5rem}
+.timeline-tasks li::before{content:'→';color:var(--teal3);flex-shrink:0}
+
+/* LOCATIONS */
+.locations{background:var(--navy2)}
+.loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.loc-card{padding:1.75rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;text-align:center;transition:all 0.3s}
+.loc-card:hover{background:rgba(14,122,128,0.1);border-color:rgba(14,122,128,0.35)}
+.loc-emoji{font-size:2rem;margin-bottom:1rem;display:block}
+.loc-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:0.5rem}
+.loc-desc{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.5}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#0A3D45 0%,#0B1D2E 50%,#0A3D45 100%);text-align:center;padding:7rem 0;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(201,148,26,0.08) 0%,transparent 70%)}
+.cta-section .section-title{font-size:clamp(2rem,4vw,3.5rem);margin:0 auto 1.5rem;max-width:700px;text-align:center}
+.cta-section .section-body{margin:0 auto 3rem;text-align:center}
+
+/* DISCLAIMER */
+.disclaimer{background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.05);padding:3rem 0}
+.disclaimer-content{font-size:0.78rem;color:rgba(255,255,255,0.25);line-height:1.8;text-align:center;max-width:800px;margin:0 auto}
+.disclaimer-content strong{color:rgba(255,255,255,0.4)}
+
+/* FOOTER */
+footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.07);padding:2.5rem 0}
+.footer-content{display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:0.08em}
+.footer-brand span{color:var(--gold)}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.25)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-content{grid-template-columns:1fr;gap:3rem}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .fin-kpis{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .loc-grid{grid-template-columns:1fr 1fr}
+  .scenarios{grid-template-columns:1fr}
+  .safety-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .hero-stats{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .fin-kpis{grid-template-columns:1fr}
+  .about-pillars{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr 1fr}
+  .footer-content{flex-direction:column;gap:1rem;text-align:center}
+}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-left{opacity:0;transform:translateX(-30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in-left.visible{opacity:1;transform:translateX(0)}
+.stagger > *{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.stagger.visible > *:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0s}
+.stagger.visible > *:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.1s}
+.stagger.visible > *:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.2s}
+.stagger.visible > *:nth-child(4){opacity:1;transform:translateY(0);transition-delay:0.3s}
+.stagger.visible > *:nth-child(5){opacity:1;transform:translateY(0);transition-delay:0.4s}
+.stagger.visible > *:nth-child(6){opacity:1;transform:translateY(0);transition-delay:0.5s}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(14,122,128,0.4),transparent);margin:0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">DmtX<span>Ecuador</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Proyecto</a></li>
+    <li><a href="#protocol">Protocolo</a></li>
+    <li><a href="#team">Equipo</a></li>
+    <li><a href="#financials">Finanzas</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Contacto</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">🌿 Medicina Ancestral Certificada · Ecuador</div>
+      <h1>Donde la<br><em>ciencia</em> y la<br>sabiduría<br>ancestral convergen</h1>
+      <p class="hero-subtitle">DmtX Ecuador es un programa clínico de medicina integrativa que combina ayahuasca tradicional con psicoterapia moderna, dentro del marco legal ecuatoriano.</p>
+      <div class="hero-actions">
+        <a href="#protocol" class="btn-primary">Ver Protocolo</a>
+        <a href="#financials" class="btn-ghost">Datos Financieros</a>
+      </div>
+    </div>
+    <div class="hero-stats stagger">
+      <div class="stat-card">
+        <div class="stat-num">5–10</div>
+        <div class="stat-label">Participantes por mes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Fases del protocolo clínico</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">M10</div>
+        <div class="stat-label">Break-even proyectado</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Legal — marco constitucional</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Explorar
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-in-left">
+        <div class="section-label">El Proyecto</div>
+        <h2 class="section-title">Una nueva <em>frontera</em> terapéutica en Ecuador</h2>
+        <p class="section-body">DmtX Ecuador integra el conocimiento ancestral amazónico con los estándares más rigurosos de la psicoterapia contemporánea. Operamos dentro del marco constitucional ecuatoriano que protege y reconoce la medicina tradicional indígena.</p>
+        <div class="about-pillars stagger" style="margin-top:2rem">
+          <div class="pillar"><div class="pillar-icon">⚕️</div><div class="pillar-name">Supervisión médica continua</div></div>
+          <div class="pillar"><div class="pillar-icon">🧠</div><div class="pillar-name">Psicoterapia integrativa</div></div>
+          <div class="pillar"><div class="pillar-icon">🌱</div><div class="pillar-name">Medicina ancestral</div></div>
+          <div class="pillar"><div class="pillar-icon">📋</div><div class="pillar-name">Protocolos MAPS</div></div>
+          <div class="pillar"><div class="pillar-icon">🛡️</div><div class="pillar-name">Screening riguroso</div></div>
+          <div class="pillar"><div class="pillar-icon">🔄</div><div class="pillar-name">Seguimiento 60 días</div></div>
+          <div class="pillar"><div class="pillar-icon">⚖️</div><div class="pillar-name">Marco legal claro</div></div>
+          <div class="pillar"><div class="pillar-icon">📊</div><div class="pillar-name">Métricas de resultado</div></div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="legal-block">
+          <div class="legal-title">Marco Legal Ecuatoriano</div>
+          <div class="legal-item">
+            <div class="legal-icon">1</div>
+            <div class="legal-text"><strong style="color:rgba(255,255,255,0.8)">Constitución 2008, Art. 57</strong> — Garantiza a comunidades indígenas el derecho a mantener y desarrollar sus prácticas de medicina ancestral.</div>
+          </div>
+          <div class="legal-item">
+            <div class="legal-icon">2</div>
+            <div class="legal-text"><strong style="color:rgba(255,255,255,0.8)">Ley Orgánica de Salud, Arts. 189–190</strong> — Reconocimiento formal de la medicina tradicional y alternativa en el sistema nacional de salud.</div>
+          </div>
+          <div class="legal-item">
+            <div class="legal-icon">3</div>
+            <div class="legal-text"><strong style="color:rgba(255,255,255,0.8)">Convenio OIT 169</strong> — Ratificado por Ecuador. Protección expresa de prácticas rituales y conocimiento ancestral de pueblos indígenas.</div>
+          </div>
+          <div class="legal-item">
+            <div class="legal-icon">4</div>
+            <div class="legal-text"><strong style="color:rgba(255,255,255,0.8)">ARCSA + MSP</strong> — Estructura de permisos definida: Centro de Medicina Integrativa y Ancestral. La ayahuasca como preparado vegetal no figura en la lista CONSEP.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROTOCOL -->
+<section class="protocol" id="protocol">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Protocolo Clínico</div>
+      <h2 class="section-title">8 Fases de<br><em>transformación guiada</em></h2>
+      <p class="section-body">Protocolo de 5 días presenciales + 60 días de integración y seguimiento. Diseñado según estándares MAPS, Johns Hopkins y la sabiduría shamánica amazónica.</p>
+    </div>
+    <div class="phases-timeline">
+      <div class="phase-item fade-in">
+        <div class="phase-num prep">I</div>
+        <div class="phase-content">
+          <div class="phase-subtitle">Evaluación · Pre-program</div>
+          <div class="phase-title">Pre-Screening y Evaluación Médica</div>
+          <p class="phase-body">Entrevista inicial de 45 minutos. Aplicación de cuestionarios validados (PHQ-9, GAD-7, PCL-5). Historia clínica completa, ECG y panel metabólico. Revisión exhaustiva de farmacología actual. Firma del consentimiento informado.</p>
+          <div class="phase-tags"><span class="phase-tag">PHQ-9</span><span class="phase-tag">GAD-7</span><span class="phase-tag">PCL-5</span><span class="phase-tag">ECG</span><span class="phase-tag">Hemograma</span></div>
+        </div>
+      </div>
+      <div class="phase-item fade-in">
+        <div class="phase-num prep">II</div>
+        <div class="phase-content">
+          <div class="phase-subtitle">Preparación · Días 1–2</div>
+          <div class="phase-title">Psicoterapia Preparatoria y Ritual</div>
+          <p class="phase-body">2-3 sesiones de psicoterapia integrativa (4-6 horas). Establecimiento de intención terapéutica. Técnicas de mindfulness y regulación emocional. Diálogo con el maestro shamánico. Dieta preparatoria de 24-72 horas.</p>
+          <div class="phase-tags"><span class="phase-tag">Psicoterapia</span><span class="phase-tag">Mindfulness</span><span class="phase-tag">Intención</span><span class="phase-tag">Dieta</span></div>
+        </div>
+      </div>
+      <div class="phase-item fade-in">
+        <div class="phase-num ceremony">III</div>
+        <div class="phase-content">
+          <div class="phase-subtitle">Ceremonia · Noches 1–2</div>
+          <div class="phase-title">Sesiones Ceremoniales con Ayahuasca</div>
+          <p class="phase-body">Primera sesión de ayahuasca en entorno ceremonial sagrado. Monitoreo continuo de signos vitales (pulsóximetro, tensión). Ratio mínimo 1 facilitador cada 4 participantes. Segunda ceremonia opcional la noche siguiente.</p>
+          <div class="phase-tags"><span class="phase-tag">Monitoreo VS</span><span class="phase-tag">Apoyo continuo</span><span class="phase-tag">Contenedor seguro</span></div>
+        </div>
+      </div>
+      <div class="phase-item fade-in">
+        <div class="phase-num integration">IV</div>
+        <div class="phase-content">
+          <div class="phase-subtitle">Integración · Semanas 1–8</div>
+          <div class="phase-title">Integración Profunda y Seguimiento</div>
+          <p class="phase-body">Sesión de procesamiento post-ceremonia con arte-terapia o escritura. 2-4 sesiones de psicoterapia integrativa durante las primeras 4 semanas. Plan de acción de cambio conductual personalizado. Evaluación formal a los 30 y 60 días.</p>
+          <div class="phase-tags"><span class="phase-tag">Arte-terapia</span><span class="phase-tag">Coaching</span><span class="phase-tag">Evaluación 30d</span><span class="phase-tag">Evaluación 60d</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Equipo Humano</div>
+      <h2 class="section-title">Los <em>expertos</em> que necesitas</h2>
+      <p class="section-body">Seis roles especializados que conforman el equipo mínimo viable para operar con 5-10 participantes al mes.</p>
+    </div>
+    <div class="team-grid stagger">
+      <div class="team-card">
+        <div class="team-role">Liderazgo Clínico</div>
+        <div class="team-name">Director Médico</div>
+        <p class="team-desc">Médico general o psiquiatra con experiencia en medicina integrativa. Supervision clínica del programa.</p>
+        <div class="team-salary"><div class="salary-num">$1,800</div><div class="salary-label">USD/mes<br>Part-time 50%</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Psicología</div>
+        <div class="team-name">Psicólogo Principal</div>
+        <p class="team-desc">PhD o MSc en Psicología Clínica. Especialización en terapia de trauma y TCC. Full-time.</p>
+        <div class="team-salary"><div class="salary-num">$1,500</div><div class="salary-label">USD/mes<br>Full-time</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Integración</div>
+        <div class="team-name">Psicólogo de Integración</div>
+        <p class="team-desc">Especialidad en mindfulness y psicología integrativa. Conduce las sesiones de integración post-ceremonia.</p>
+        <div class="team-salary"><div class="salary-num">$1,200</div><div class="salary-label">USD/mes<br>Full-time</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Conocimiento Ancestral</div>
+        <div class="team-name">Facilitador Shamánico</div>
+        <p class="team-desc">Curandero tradicional reconocido por su comunidad. Mínimo 10 años de experiencia con ayahuasca.</p>
+        <div class="team-salary"><div class="salary-num">$800</div><div class="salary-label">USD/mes<br>Por ceremonia</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Operaciones</div>
+        <div class="team-name">Coordinador del Programa</div>
+        <p class="team-desc">Administración, salud pública o trabajo social. Bilingüe. Gestión integral del ciclo del participante.</p>
+        <div class="team-salary"><div class="salary-num">$900</div><div class="salary-label">USD/mes<br>Full-time</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Seguridad Clínica</div>
+        <div class="team-name">Enfermero/a</div>
+        <p class="team-desc">Título habilitante. Experiencia en UCI o emergencias. Presente durante todas las sesiones ceremoniales.</p>
+        <div class="team-salary"><div class="salary-num">$700</div><div class="salary-label">USD/mes<br>Part-time</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SAFETY -->
+<section class="safety" id="safety">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Seguridad</div>
+      <h2 class="section-title">Quién puede <em>participar</em></h2>
+    </div>
+    <div class="safety-grid fade-in">
+      <div class="safety-block">
+        <div class="safety-block-title"><span>✓</span> Candidatos Óptimos</div>
+        <ul class="safety-list">
+          <li>Adultos 25-65 años con estado psicológico estable</li>
+          <li>Depresión resistente al tratamiento convencional</li>
+          <li>Trastorno de estrés postraumático (TEPT)</li>
+          <li>Adicciones en recuperación (6+ meses abstinencia)</li>
+          <li>Ansiedad existencial o crisis de significado</li>
+          <li>Transiciones vitales importantes</li>
+          <li>Búsqueda de crecimiento personal profundo</li>
+          <li>Duelo complicado o enfermedades crónicas</li>
+        </ul>
+      </div>
+      <div class="safety-block">
+        <div class="safety-block-title" style="color:#E05252"><span>✗</span> Contraindicaciones Absolutas</div>
+        <ul class="safety-list">
+          <li class="excluded">Historia de psicosis, esquizofrenia, bipolar tipo I</li>
+          <li class="excluded">Uso actual de IMAOs, ISRSs, litio o tramadol</li>
+          <li class="excluded">Cardiopatía severa o hipertensión no controlada</li>
+          <li class="excluded">Embarazo o lactancia activa</li>
+          <li class="excluded">Epilepsia activa o historial de convulsiones</li>
+          <li class="excluded">Menores de 18 años (exclusión absoluta)</li>
+          <li class="excluded">Glaucoma no tratado</li>
+          <li class="excluded">Enfermedades hepáticas severas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINANCIALS -->
+<section class="financials" id="financials">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Modelo Financiero</div>
+      <h2 class="section-title">Números <em>reales</em>, viabilidad demostrada</h2>
+    </div>
+    <div class="fin-kpis stagger">
+      <div class="kpi-card teal">
+        <div class="kpi-value positive">$65K</div>
+        <div class="kpi-label">Inversión inicial (CAPEX)</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-value gold">$13.2K</div>
+        <div class="kpi-label">OPEX mensual (8 pax)</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-value" style="color:#2ECC71">M10</div>
+        <div class="kpi-label">Break-even operativo</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-value" style="color:#5DADE2">$2,115</div>
+        <div class="kpi-label">Precio promedio por programa</div>
+      </div>
+    </div>
+    <div class="scenarios fade-in">
+      <div class="scenario-card">
+        <div class="scenario-year">Año 1 · Ramp-up</div>
+        <div class="scenario-rev">$155,000</div>
+        <div class="scenario-pax">~6 pax promedio/mes</div>
+        <ul class="scenario-items">
+          <li><span>OPEX anual</span><span>$161,300</span></li>
+          <li class="negative"><span>EBITDA</span><span>-$6,300</span></li>
+          <li class="negative"><span>Utilidad neta</span><span>-$10,000</span></li>
+          <li><span>Margen</span><span>-4%</span></li>
+        </ul>
+      </div>
+      <div class="scenario-card featured">
+        <div class="scenario-year">Año 2 · Crecimiento +35%</div>
+        <div class="scenario-rev">$209,250</div>
+        <div class="scenario-pax">~8 pax promedio/mes</div>
+        <ul class="scenario-items">
+          <li><span>OPEX anual</span><span>$179,000</span></li>
+          <li class="positive"><span>EBITDA</span><span>+$30,250</span></li>
+          <li class="positive"><span>Utilidad neta</span><span>+$22,000</span></li>
+          <li><span>Margen</span><span>14%</span></li>
+        </ul>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-year">Año 3 · Consolidación +25%</div>
+        <div class="scenario-rev">$261,563</div>
+        <div class="scenario-pax">~10 pax promedio/mes</div>
+        <ul class="scenario-items">
+          <li><span>OPEX anual</span><span>$193,000</span></li>
+          <li class="positive"><span>EBITDA</span><span>+$68,563</span></li>
+          <li class="positive"><span>Utilidad neta</span><span>+$52,000</span></li>
+          <li><span>Margen</span><span>26%</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section class="roadmap" id="roadmap">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Plan de Implementación</div>
+      <h2 class="section-title">De la visión a la<br><em>operación</em> en 5 meses</h2>
+    </div>
+    <div class="timeline stagger">
+      <div class="timeline-phase">
+        <div class="timeline-period">Meses 1–2</div>
+        <div class="timeline-title">Fundamentación Legal</div>
+        <ul class="timeline-tasks">
+          <li>Constitución jurídica de la empresa</li>
+          <li>Contratación abogado especializado</li>
+          <li>Inicio trámites ARCSA / MSP</li>
+          <li>Búsqueda y firma espacio físico</li>
+          <li>Constitución del equipo base</li>
+        </ul>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-period">Meses 2–3</div>
+        <div class="timeline-title">Infraestructura</div>
+        <ul class="timeline-tasks">
+          <li>Adecuación espacio ceremonial</li>
+          <li>Compra equipamiento médico</li>
+          <li>Desarrollo sitio web + branding</li>
+          <li>Protocolos escritos validados</li>
+          <li>Convenio hospital de referencia</li>
+        </ul>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-period">Meses 3–4</div>
+        <div class="timeline-title">Piloto Soft</div>
+        <ul class="timeline-tasks">
+          <li>2–3 sesiones piloto (staff/voluntarios)</li>
+          <li>Validación de protocolos clínicos</li>
+          <li>Ajustes operativos</li>
+          <li>Primeros testimonios documentados</li>
+          <li>Activación pre-launch marketing</li>
+        </ul>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-period">Mes 4–5</div>
+        <div class="timeline-title">Lanzamiento</div>
+        <ul class="timeline-tasks">
+          <li>Apertura al público</li>
+          <li>Primeras 4 cohortes pagantes</li>
+          <li>Marketing digital activo</li>
+          <li>Eventos con terapeutas aliados</li>
+          <li>Optimización continua</li>
+        </ul>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-period">Meses 6–12</div>
+        <div class="timeline-title">Crecimiento</div>
+        <ul class="timeline-tasks">
+          <li>Escala gradual 8+ pax/mes</li>
+          <li>Publicación primeros resultados</li>
+          <li>Evaluación programa internacional</li>
+          <li>Refinamiento de procesos</li>
+          <li>Análisis de expansión</li>
+        </ul>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-period">Año 2–3</div>
+        <div class="timeline-title">Consolidación</div>
+        <ul class="timeline-tasks">
+          <li>Ocupación sostenida 8–10 pax</li>
+          <li>Análisis segundo centro</li>
+          <li>Publicación caso de estudio</li>
+          <li>Capacitación nuevos facilitadores</li>
+          <li>ROI positivo sostenido</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Ubicaciones Potenciales</div>
+      <h2 class="section-title">Ecuador — <em>tierra elegida</em></h2>
+    </div>
+    <div class="loc-grid stagger">
+      <div class="loc-card"><span class="loc-emoji">🌿</span><div class="loc-name">Amazonia</div><div class="loc-desc">Tena, Puyo, Macas. Territorio ancestral de las comunidades Kichwa. Máxima autenticidad ceremonial.</div></div>
+      <div class="loc-card"><span class="loc-emoji">🏔️</span><div class="loc-name">Sierra</div><div class="loc-desc">Cotacachi, Vilcabamba, Yunguilla. Naturaleza sagrada, retiros privados, acceso desde Quito.</div></div>
+      <div class="loc-card"><span class="loc-emoji">🌊</span><div class="loc-name">Costa</div><div class="loc-desc">Montañita, Manglaralto, Ayampe. Energía oceánica, acceso internacional, clima favorable.</div></div>
+      <div class="loc-card"><span class="loc-emoji">🏙️</span><div class="loc-name">Quito</div><div class="loc-desc">Centro urbano, cercanía a aeropuerto internacional, acceso a profesionales de salud especializados.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="section-label" style="text-align:center">¿Listo para empezar?</div>
+    <h2 class="section-title">Construyamos esto <em>juntos</em></h2>
+    <p class="section-body">Este proyecto busca colaboradores, inversores y profesionales de salud comprometidos con la medicina integrativa. Si quieres ser parte de la primera clínica DmtX de Ecuador, conectemos.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="mailto:ney123456789@gmail.com" class="btn-primary">Contactar al Equipo</a>
+      <a href="#protocol" class="btn-ghost">Ver el Protocolo</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="container">
+    <p class="disclaimer-content"><strong>Aviso Legal y Médico:</strong> Este sitio es de carácter informativo y no constituye asesoría médica, legal ni financiera. El uso de ayahuasca implica riesgos potenciales y requiere evaluación médica previa. Los datos financieros son proyecciones orientativas. La operación del programa debe realizarse con autorización de las autoridades sanitarias ecuatorianas competentes. DmtX Ecuador no ofrece tratamientos médicos ni cura enfermedades. Consulte siempre con profesionales habilitados.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">DmtX<span>Ecuador</span></div>
+      <div class="footer-copy">© 2026 DmtX Ecuador. Medicina Integrativa Ancestral.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Particles
+(function(){
+  const c=document.getElementById('particles');
+  for(let i=0;i<25;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;background:rgba(${Math.random()>0.5?'14,122,128':'201,148,26'},${Math.random()*0.4+0.1});left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:-${Math.random()*20}s`;
+    c.appendChild(p);
+  }
+})();
+
+// Scroll animations
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.fade-in-left,.stagger').forEach(el=>obs.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.padding=window.scrollY>50?'0.6rem 2rem':'1rem 2rem';
+});
+
+// Smooth number counter for KPIs
+function animateCounter(el,target,prefix='',suffix=''){
+  let current=0;const step=target/60;
+  const timer=setInterval(()=>{
+    current+=step;
+    if(current>=target){current=target;clearInterval(timer);}
+    el.textContent=prefix+Math.floor(current).toLocaleString()+suffix;
+  },16);
+}
+const kpiObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.animated){
+      e.target.dataset.animated='1';
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.kpi-card').forEach(el=>kpiObs.observe(el));
+</script>
+</body>
+</html>
