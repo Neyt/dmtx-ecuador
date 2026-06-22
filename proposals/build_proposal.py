@@ -163,6 +163,14 @@ story.append(Paragraph(
     "pumps, monitoring) is <b>borrowed from partner institutions rather than purchased</b>. "
     "Equipment lines therefore cover access, transport, calibration, and consumables only. All "
     "figures are in USD (Ecuador's currency).", body))
+story.append(Spacer(1, 0.05 * inch))
+story.append(Paragraph(
+    "<b>Two scenarios.</b> Each study is presented as a range. The upper bound is the "
+    "<b>fully-costed</b> figure at market rates. The lower bound is the <b>partnership-leveraged</b> "
+    "figure, which assumes maximal in-kind support: donated equipment and scanner time, clinical "
+    "and academic collaborators contributing as co-investigators, and graduate researchers "
+    "embedding the work within their own theses. The realistic operating budget typically sits "
+    "between the two, since skilled personnel time is the least compressible cost.", body))
 
 story.append(NextPageTemplate("Content"))
 story.append(PageBreak())
@@ -184,15 +192,15 @@ summary_rows = [
      Paragraph("Indicative budget", tablehead), Paragraph("Risk / complexity", tablehead)],
     [Paragraph("<b>1. Extended-State DMT (DMTx)</b>", tablecellb),
      Paragraph("Can the DMT state be safely extended and characterised in real time?", tablecell),
-     Paragraph("$90k – $150k", tablecell),
+     Paragraph("$40k – $150k", tablecell),
      Paragraph("High — controlled substance, medical", tablecell)],
     [Paragraph("<b>2. Brain-to-Brain Correlation</b>", tablecellb),
      Paragraph("Do separated, paired subjects show correlated EEG responses?", tablecell),
-     Paragraph("$35k – $55k", tablecell),
+     Paragraph("$17k – $55k", tablecell),
      Paragraph("Medium — design rigor is everything", tablecell)],
     [Paragraph("<b>3. Trance / Healer Neurophysiology</b>", tablecellb),
      Paragraph("Do practitioners enter a reproducible, distinct brain state?", tablecell),
-     Paragraph("$30k – $50k", tablecell),
+     Paragraph("$18k – $50k", tablecell),
      Paragraph("Low–Medium — recruitment-limited", tablecell)],
 ]
 st = Table(summary_rows, colWidths=[1.55 * inch, 2.5 * inch, 1.15 * inch, 1.5 * inch])
@@ -221,7 +229,7 @@ story.append(Paragraph(
 # Helper for a full proposal block
 # ---------------------------------------------------------------------------
 def proposal(number, title, idea_html, design_items, equipment, ethics, timeline,
-             budget_rows, budget_total, references):
+             budget_rows, budget_total, references, floor_note=None):
     story.append(PageBreak())
     # header band
     band = Table([[Paragraph(f'<font color="white"><b>EXPERIMENT {number}</b></font>', small)]],
@@ -290,6 +298,10 @@ def proposal(number, title, idea_html, design_items, equipment, ethics, timeline
         ("GRID", (0, 0), (-1, -1), 0.4, RULE),
     ]))
     story.append(bt)
+    if floor_note:
+        story.append(Spacer(1, 4))
+        story.append(Paragraph(floor_note, S("floor", fontName="Helvetica-Oblique", fontSize=9,
+                                             leading=13, textColor=GREY)))
     story.append(Spacer(1, 8))
 
     story.append(Paragraph("Key references &amp; links", h2))
@@ -346,7 +358,7 @@ proposal(
         ("Participant screening, compensation &amp; facility", "$8,000"),
         ("Data analysis, computing, dissemination &amp; contingency", "$6,000"),
     ],
-    "≈ $90,000 – $150,000",
+    "≈ $90,000 – $150,000  (fully costed)",
     [
         ("Gallimore &amp; Strassman (2016), Frontiers in Pharmacology",
          "https://doi.org/10.3389/fphar.2016.00211"),
@@ -355,6 +367,10 @@ proposal(
         ("Continuous DMT infusion study (PMC12032411)",
          "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12032411/"),
     ],
+    floor_note="With maximal in-kind institutional support — donated drug synthesis, clinical "
+    "collaborators contributing as co-investigators, borrowed instrumentation, and graduate "
+    "researchers embedding the work within their theses — the partnership-leveraged floor falls "
+    "to approximately $40,000.",
 )
 
 # ---------------------------------------------------------------------------
@@ -407,13 +423,16 @@ proposal(
         ("Preregistration, replication design &amp; statistical consulting", "$3,000"),
         ("Computing, open-data hosting &amp; dissemination", "$2,000"),
     ],
-    "≈ $35,000 – $55,000",
+    "≈ $35,000 – $55,000  (fully costed)",
     [
         ("Jacobo Grinberg — background &amp; publication reference (Wikipedia, ES)",
          "https://es.wikipedia.org/wiki/Jacobo_Grinberg"),
         ("Related separated-subject EEG study (PubMed 12972348)",
          "https://pubmed.ncbi.nlm.nih.gov/12972348/"),
     ],
+    floor_note="With borrowed instrumentation, free use of an existing shielded facility, and "
+    "student researchers carrying the data collection, the partnership-leveraged floor falls to "
+    "approximately $17,000.",
 )
 
 # ---------------------------------------------------------------------------
@@ -463,13 +482,16 @@ proposal(
         ("Peripheral physiology (HRV, EDA) — borrowed / low-cost", "$2,000"),
         ("Ethics, preregistration, dissemination &amp; contingency", "$3,000"),
     ],
-    "≈ $30,000 – $50,000",
+    "≈ $30,000 – $50,000  (fully costed)",
     [
         ("Cognitive / shamanic-style trance research (arXiv 2509.19254)",
          "https://arxiv.org/abs/2509.19254"),
         ("Trance &amp; neurophysiology — general background (Wikipedia)",
          "https://en.wikipedia.org/wiki/Trance"),
     ],
+    floor_note="With donated scanner / EEG time, borrowed physiology hardware, and student "
+    "researchers leading data collection, the partnership-leveraged floor falls to approximately "
+    "$18,000.",
 )
 
 # ---------------------------------------------------------------------------
@@ -481,28 +503,29 @@ story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8)
 story.append(Paragraph(
     "The figures below are <b>rough, order-of-magnitude estimates</b> for pilot studies run in "
     "<b>Cuenca, Ecuador</b>, using <b>local salaries</b> and <b>borrowed equipment</b> from partner "
-    "institutions (no major hardware purchases). They are deliberately lean; the largest variable "
-    "is personnel time. If a study required buying its own EEG/MRI hardware or a dedicated shielded "
-    "facility, costs would rise substantially — but that is explicitly not assumed here.", body))
+    "institutions (no major hardware purchases). Each study is shown across two scenarios: a "
+    "<b>partnership-leveraged</b> figure that assumes maximal in-kind support, and a "
+    "<b>fully-costed</b> figure at market rate. The largest variable in both is skilled personnel "
+    "time.", body))
 
 comp = [
-    [Paragraph("Study", tablehead), Paragraph("Low", tablehead),
-     Paragraph("High", tablehead), Paragraph("Typical duration", tablehead),
-     Paragraph("First-mover?", tablehead)],
-    [Paragraph("1 · Extended-State DMT (DMTx)", tablecellb), Paragraph("$90k", tablecell),
+    [Paragraph("Study", tablehead), Paragraph("Partnership-leveraged", tablehead),
+     Paragraph("Fully costed", tablehead), Paragraph("Duration", tablehead),
+     Paragraph("Role", tablehead)],
+    [Paragraph("1 · Extended-State DMT (DMTx)", tablecellb), Paragraph("~$40k", tablecell),
      Paragraph("$150k", tablecell), Paragraph("18–24 months", tablecell),
      Paragraph("Flagship — later phase", tablecell)],
-    [Paragraph("2 · Brain-to-Brain Correlation", tablecellb), Paragraph("$35k", tablecell),
+    [Paragraph("2 · Brain-to-Brain Correlation", tablecellb), Paragraph("~$17k", tablecell),
      Paragraph("$55k", tablecell), Paragraph("12–15 months", tablecell),
      Paragraph("Strong candidate", tablecell)],
-    [Paragraph("3 · Trance / Healer Neurophysiology", tablecellb), Paragraph("$30k", tablecell),
+    [Paragraph("3 · Trance / Healer Neurophysiology", tablecellb), Paragraph("~$18k", tablecell),
      Paragraph("$50k", tablecell), Paragraph("12–18 months", tablecell),
      Paragraph("Strong candidate", tablecell)],
     [Paragraph("<b>Combined programme (all three)</b>", tablecellb),
-     Paragraph("<b>$155k</b>", tablecellb), Paragraph("<b>$255k</b>", tablecellb),
+     Paragraph("<b>~$75k</b>", tablecellb), Paragraph("<b>$255k</b>", tablecellb),
      Paragraph("~2–3 years phased", tablecell), Paragraph("—", tablecell)],
 ]
-ct = Table(comp, colWidths=[2.5 * inch, 0.85 * inch, 0.85 * inch, 1.3 * inch, 1.2 * inch])
+ct = Table(comp, colWidths=[2.05 * inch, 1.15 * inch, 0.95 * inch, 1.1 * inch, 1.45 * inch])
 ct.setStyle(TableStyle([
     ("BACKGROUND", (0, 0), (-1, 0), NAVY),
     ("ROWBACKGROUNDS", (0, 1), (-1, -2), [colors.white, LIGHT]),
@@ -519,9 +542,13 @@ story.append(Spacer(1, 4))
 story.append(ct)
 story.append(Spacer(1, 6))
 story.append(Paragraph(
-    "All totals assume borrowed equipment and Cuenca-based personnel. Studies 2 and 3 are modest "
-    "enough to run as graduate / faculty research projects; Study 1 (DMTx) carries the clinical, "
-    "drug, and regulatory load that keeps it the most expensive even at local prices.", small))
+    "The <i>partnership-leveraged</i> column reflects maximal in-kind support (donated equipment "
+    "and scanner time, collaborators contributing as co-investigators, student-led data "
+    "collection); the <i>fully-costed</i> column prices every line at market rate. A realistic "
+    "operating budget usually lands between the two, since skilled personnel time is the least "
+    "compressible cost. Studies 2 and 3 are modest enough to run as graduate / faculty research "
+    "projects; Study 1 (DMTx) carries the clinical, drug, and regulatory load that keeps it the "
+    "most expensive even at local prices.", small))
 
 story.append(Paragraph("Cross-Cutting Principles", h1))
 story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
