@@ -156,6 +156,13 @@ story.append(Paragraph(
     "studies. The aim is not to prove extraordinary claims, but to test them under conditions "
     "that are publishable even when the result is negative. A clean null result is a valuable "
     "scientific contribution; a positive result would be highly significant.", body))
+story.append(Spacer(1, 0.08 * inch))
+story.append(Paragraph(
+    "<b>Costing basis.</b> Budgets are grounded in <b>Cuenca, Ecuador</b> conditions: local "
+    "academic and clinical salaries, and the assumption that major equipment (EEG, fMRI, infusion "
+    "pumps, monitoring) is <b>borrowed from partner institutions rather than purchased</b>. "
+    "Equipment lines therefore cover access, transport, calibration, and consumables only. All "
+    "figures are in USD (Ecuador's currency).", body))
 
 story.append(NextPageTemplate("Content"))
 story.append(PageBreak())
@@ -177,15 +184,15 @@ summary_rows = [
      Paragraph("Indicative budget", tablehead), Paragraph("Risk / complexity", tablehead)],
     [Paragraph("<b>1. Extended-State DMT (DMTx)</b>", tablecellb),
      Paragraph("Can the DMT state be safely extended and characterised in real time?", tablecell),
-     Paragraph("$450k – $650k", tablecell),
+     Paragraph("$90k – $150k", tablecell),
      Paragraph("High — controlled substance, medical", tablecell)],
     [Paragraph("<b>2. Brain-to-Brain Correlation</b>", tablecellb),
      Paragraph("Do separated, paired subjects show correlated EEG responses?", tablecell),
-     Paragraph("$250k – $350k", tablecell),
+     Paragraph("$35k – $55k", tablecell),
      Paragraph("Medium — design rigor is everything", tablecell)],
     [Paragraph("<b>3. Trance / Healer Neurophysiology</b>", tablecellb),
      Paragraph("Do practitioners enter a reproducible, distinct brain state?", tablecell),
-     Paragraph("$200k – $320k", tablecell),
+     Paragraph("$30k – $50k", tablecell),
      Paragraph("Low–Medium — recruitment-limited", tablecell)],
 ]
 st = Table(summary_rows, colWidths=[1.55 * inch, 2.5 * inch, 1.15 * inch, 1.5 * inch])
@@ -315,10 +322,10 @@ proposal(
         "<b>Analysis:</b> preregistered, with predefined safety stopping rules and primary endpoints.",
     ],
     [
-        "Clinical research unit with anaesthesia-grade monitoring",
-        "Target-controlled IV infusion pump(s)",
-        "Research-grade EEG (optionally MRI-compatible) and physiological monitoring",
-        "GMP-grade DMT and hospital pharmacy handling",
+        "Clinical research unit with anaesthesia-grade monitoring (partner hospital)",
+        "Target-controlled IV infusion pump(s) — borrowed",
+        "Research-grade EEG &amp; physiological monitoring — borrowed",
+        "Pharmaceutical-grade DMT and hospital pharmacy handling",
         "Controlled-substance storage and chain-of-custody",
     ],
     [
@@ -331,15 +338,15 @@ proposal(
     "Approximately 18–24 months: 6–9 months for regulatory, ethics, and drug supply; "
     "3 months setup and staff training; 6–9 months data collection; 3–6 months analysis and write-up.",
     [
-        ("Regulatory, licensing, controlled-substance &amp; ethics approvals", "$40,000"),
-        ("GMP DMT supply, pharmacy &amp; secure handling", "$60,000"),
-        ("Clinical &amp; medical staff (physician, anaesthesia, nurse, psychiatrist)", "$120,000"),
-        ("Neuroimaging / EEG equipment or scanner access &amp; physiological monitoring", "$80,000"),
-        ("Core research personnel (PI, postdoc, RAs, analyst — ~1 yr)", "$180,000"),
-        ("Participant screening, compensation &amp; facility costs", "$40,000"),
-        ("Data analysis, computing, dissemination &amp; contingency", "$30,000"),
+        ("Regulatory, ethics &amp; controlled-substance permits (Ecuador)", "$8,000"),
+        ("Pharmaceutical-grade DMT supply &amp; secure handling", "$20,000"),
+        ("Clinical &amp; medical staff (physician, anaesthesia, nurse, psychiatrist) — local rates", "$25,000"),
+        ("Borrowed EEG / monitoring — access, transport, calibration &amp; consumables", "$8,000"),
+        ("Core research personnel (PI, postdoc, RAs, analyst — ~1 yr, Cuenca rates)", "$40,000"),
+        ("Participant screening, compensation &amp; facility", "$8,000"),
+        ("Data analysis, computing, dissemination &amp; contingency", "$6,000"),
     ],
-    "≈ $450,000 – $650,000",
+    "≈ $90,000 – $150,000",
     [
         ("Gallimore &amp; Strassman (2016), Frontiers in Pharmacology",
          "https://doi.org/10.3389/fphar.2016.00211"),
@@ -377,11 +384,11 @@ proposal(
         "well-powered null is a publishable outcome.",
     ],
     [
-        "Two research-grade EEG (or EEG/MEG) systems, time-synchronised",
-        "Electromagnetically shielded / Faraday-isolated rooms",
+        "Two research-grade EEG systems, time-synchronised — borrowed",
+        "Electromagnetically shielded / Faraday-isolated rooms (existing facility)",
         "Hardware trigger &amp; precision timing infrastructure",
         "Automated, preregistered analysis pipeline",
-        "Audio/RF isolation verification equipment",
+        "Audio/RF isolation verification",
     ],
     [
         "IRB / ethics approval (low physical risk)",
@@ -393,14 +400,14 @@ proposal(
     "Approximately 12–15 months: 2–3 months ethics and preregistration; 2 months setup and "
     "isolation testing; 5–6 months paired data collection; 3–4 months analysis and write-up.",
     [
-        ("Research-grade EEG/MEG equipment (purchase or rental)", "$80,000"),
-        ("Shielded-room setup or facility access &amp; isolation testing", "$30,000"),
-        ("Core personnel (PI part-time, postdoc, 2 RAs, analyst — ~1 yr)", "$160,000"),
-        ("Participant recruitment &amp; compensation (~60 participants)", "$20,000"),
-        ("Preregistration, replication design &amp; statistical consulting", "$15,000"),
-        ("Computing, open-data hosting &amp; dissemination", "$15,000"),
+        ("Borrowed EEG — transport, caps/electrodes, gel, calibration", "$4,000"),
+        ("Shielded-room setup &amp; isolation testing (existing facility)", "$5,000"),
+        ("Core personnel (PI part-time, postdoc, 2 RAs, analyst — ~1 yr, Cuenca rates)", "$30,000"),
+        ("Participant recruitment &amp; compensation (~60 participants)", "$4,000"),
+        ("Preregistration, replication design &amp; statistical consulting", "$3,000"),
+        ("Computing, open-data hosting &amp; dissemination", "$2,000"),
     ],
-    "≈ $250,000 – $350,000",
+    "≈ $35,000 – $55,000",
     [
         ("Jacobo Grinberg — background &amp; publication reference (Wikipedia, ES)",
          "https://es.wikipedia.org/wiki/Jacobo_Grinberg"),
@@ -434,8 +441,8 @@ proposal(
         "<b>Analysis:</b> preregistered classification accuracy and effect-size thresholds.",
     ],
     [
-        "Research-grade EEG (and/or fMRI scanner access)",
-        "Autonomic / peripheral physiology recording (HRV, EDA)",
+        "Research-grade EEG and/or fMRI scanner access — borrowed",
+        "Autonomic / peripheral physiology recording (HRV, EDA) — borrowed",
         "Synchronised audio-video for state annotation",
         "Analysis workstation &amp; ML pipeline",
         "Quiet, controlled recording environment",
@@ -450,13 +457,13 @@ proposal(
     "Approximately 12–18 months: 2–3 months ethics, community engagement, and recruitment; "
     "5–7 months data collection (recruitment-paced); 3–5 months analysis and write-up.",
     [
-        ("EEG equipment and/or fMRI scanner time (~40 sessions)", "$60,000"),
-        ("Core personnel (postdoc, RAs, data analyst — ~1 yr)", "$150,000"),
-        ("Practitioner recruitment, travel &amp; compensation", "$35,000"),
-        ("Peripheral physiology hardware (HRV, EDA, respiration)", "$15,000"),
-        ("Ethics, preregistration, dissemination &amp; contingency", "$20,000"),
+        ("Borrowed EEG / fMRI — scanner access fees &amp; consumables (~40 sessions)", "$5,000"),
+        ("Core personnel (postdoc, RAs, data analyst — ~1 yr, Cuenca rates)", "$28,000"),
+        ("Practitioner recruitment, travel &amp; compensation", "$6,000"),
+        ("Peripheral physiology (HRV, EDA) — borrowed / low-cost", "$2,000"),
+        ("Ethics, preregistration, dissemination &amp; contingency", "$3,000"),
     ],
-    "≈ $200,000 – $320,000",
+    "≈ $30,000 – $50,000",
     [
         ("Cognitive / shamanic-style trance research (arXiv 2509.19254)",
          "https://arxiv.org/abs/2509.19254"),
@@ -472,26 +479,27 @@ story.append(PageBreak())
 story.append(Paragraph("Comparative Budget Overview", h1))
 story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
 story.append(Paragraph(
-    "The figures below are <b>rough, order-of-magnitude estimates</b> for self-contained pilot "
-    "studies. Real costs depend heavily on the host institution: where a university already owns "
-    "EEG/MRI infrastructure, shielded rooms, or a clinical research unit, equipment and facility "
-    "lines can fall substantially, since these become shared rather than dedicated costs.", body))
+    "The figures below are <b>rough, order-of-magnitude estimates</b> for pilot studies run in "
+    "<b>Cuenca, Ecuador</b>, using <b>local salaries</b> and <b>borrowed equipment</b> from partner "
+    "institutions (no major hardware purchases). They are deliberately lean; the largest variable "
+    "is personnel time. If a study required buying its own EEG/MRI hardware or a dedicated shielded "
+    "facility, costs would rise substantially — but that is explicitly not assumed here.", body))
 
 comp = [
     [Paragraph("Study", tablehead), Paragraph("Low", tablehead),
      Paragraph("High", tablehead), Paragraph("Typical duration", tablehead),
      Paragraph("First-mover?", tablehead)],
-    [Paragraph("1 · Extended-State DMT (DMTx)", tablecellb), Paragraph("$450k", tablecell),
-     Paragraph("$650k", tablecell), Paragraph("18–24 months", tablecell),
+    [Paragraph("1 · Extended-State DMT (DMTx)", tablecellb), Paragraph("$90k", tablecell),
+     Paragraph("$150k", tablecell), Paragraph("18–24 months", tablecell),
      Paragraph("Flagship — later phase", tablecell)],
-    [Paragraph("2 · Brain-to-Brain Correlation", tablecellb), Paragraph("$250k", tablecell),
-     Paragraph("$350k", tablecell), Paragraph("12–15 months", tablecell),
+    [Paragraph("2 · Brain-to-Brain Correlation", tablecellb), Paragraph("$35k", tablecell),
+     Paragraph("$55k", tablecell), Paragraph("12–15 months", tablecell),
      Paragraph("Strong candidate", tablecell)],
-    [Paragraph("3 · Trance / Healer Neurophysiology", tablecellb), Paragraph("$200k", tablecell),
-     Paragraph("$320k", tablecell), Paragraph("12–18 months", tablecell),
+    [Paragraph("3 · Trance / Healer Neurophysiology", tablecellb), Paragraph("$30k", tablecell),
+     Paragraph("$50k", tablecell), Paragraph("12–18 months", tablecell),
      Paragraph("Strong candidate", tablecell)],
     [Paragraph("<b>Combined programme (all three)</b>", tablecellb),
-     Paragraph("<b>$900k</b>", tablecellb), Paragraph("<b>$1.32M</b>", tablecellb),
+     Paragraph("<b>$155k</b>", tablecellb), Paragraph("<b>$255k</b>", tablecellb),
      Paragraph("~2–3 years phased", tablecell), Paragraph("—", tablecell)],
 ]
 ct = Table(comp, colWidths=[2.5 * inch, 0.85 * inch, 0.85 * inch, 1.3 * inch, 1.2 * inch])
@@ -511,8 +519,9 @@ story.append(Spacer(1, 4))
 story.append(ct)
 story.append(Spacer(1, 6))
 story.append(Paragraph(
-    "Budgets assume external dedicated provision of major equipment. With shared university "
-    "infrastructure, expect roughly 20–40% lower totals on Studies 2 and 3.", small))
+    "All totals assume borrowed equipment and Cuenca-based personnel. Studies 2 and 3 are modest "
+    "enough to run as graduate / faculty research projects; Study 1 (DMTx) carries the clinical, "
+    "drug, and regulatory load that keeps it the most expensive even at local prices.", small))
 
 story.append(Paragraph("Cross-Cutting Principles", h1))
 story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
