@@ -1,0 +1,38 @@
+# Three Experiments — Research Concept Note
+
+Prepared in response to Julie Combs' request (email "3 experiments", 22 June 2026)
+for rough proposals and general budgets to share with university partners.
+
+## Contents
+
+- **`Three_Experiments_Concept_Note.pdf`** — formatted concept note in **English**
+  (cover page, per-experiment proposals, comparative budget table, references).
+- **`Tres_Experimentos_Nota_Conceptual.pdf`** — the same concept note in **Spanish**.
+- **`build_proposal.py`** — ReportLab script that generates the English PDF.
+- **`build_proposal_es.py`** — ReportLab script that generates the Spanish PDF.
+
+Both PDFs are the documents to attach when replying to Julie.
+
+## The three priority studies
+
+| # | Study | Core question | Indicative budget | Duration |
+|---|-------|---------------|-------------------|----------|
+| 1 | Extended-State DMT (DMTx) | Can the DMT state be safely extended and characterised in real time? | $90k – $150k | 18–24 mo |
+| 2 | Brain-to-Brain Correlation ("transferred potential" replication) | Do separated, paired subjects show correlated EEG responses? | $35k – $55k | 12–15 mo |
+| 3 | Trance / Healer Neurophysiology | Do practitioners enter a reproducible, distinct brain state? | $30k – $50k | 12–18 mo |
+
+All three are framed as replication / falsification studies: preregistered,
+ethically approvable, and publishable even when the result is negative.
+
+**Budgets are grounded in Cuenca, Ecuador conditions** — local academic/clinical
+salaries and **borrowed equipment** (EEG, fMRI, infusion pumps) from partner
+institutions rather than hardware purchases. Equipment lines cover access,
+transport, calibration, and consumables only. Combined programme: **$155k – $255k**.
+
+## Rebuild the PDF
+
+```bash
+pip install reportlab
+python3 proposals/build_proposal.py     # English
+python3 proposals/build_proposal_es.py  # Spanish
+```
