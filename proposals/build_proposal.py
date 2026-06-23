@@ -96,7 +96,7 @@ def cover(canvas, doc):
     canvas.setFont("Helvetica-Bold", 11)
     canvas.drawString(0.9 * inch, 10.35 * inch, "RESEARCH CONCEPT NOTE")
     canvas.setFont("Helvetica", 10)
-    canvas.drawString(0.9 * inch, 10.12 * inch, "Three Candidate Experiments for University Replication")
+    canvas.drawString(0.9 * inch, 10.12 * inch, "Three Candidate Experiments for the Universidad de Cuenca")
     canvas.restoreState()
     footer(canvas, doc)
 
@@ -124,16 +124,19 @@ story = []
 # COVER
 # ---------------------------------------------------------------------------
 story.append(Spacer(1, 0.35 * inch))
-story.append(Paragraph("Three Experiments for Rigorous<br/>University Replication", title_style))
+story.append(Paragraph("Three Experiments for the<br/>Universidad de Cuenca", title_style))
 story.append(Spacer(1, 0.1 * inch))
-story.append(Paragraph("A concept note on testing extraordinary claims about consciousness "
-                       "under clean, ethical, preregistered, and publishable conditions.",
+story.append(Paragraph("A concept note on rigorous, ethical, university-led replication studies of "
+                       "consciousness and altered states — proposed in alignment with the "
+                       "University's mission and vision.",
                        subtitle_style))
 story.append(Spacer(1, 0.35 * inch))
 story.append(HRFlowable(width="100%", thickness=1, color=RULE))
 story.append(Spacer(1, 0.18 * inch))
 
 meta_tbl = Table([
+    [Paragraph("<b>Institution</b>", meta_style),
+     Paragraph("Universidad de Cuenca · Cuenca, Ecuador", meta_style)],
     [Paragraph("<b>Prepared for</b>", meta_style), Paragraph("Julie Combs", meta_style)],
     [Paragraph("<b>Prepared by</b>", meta_style), Paragraph("Ney Torres", meta_style)],
     [Paragraph("<b>Date</b>", meta_style), Paragraph("23 June 2026", meta_style)],
@@ -162,17 +165,88 @@ story.append(Paragraph(
     "academic and clinical salaries, and the assumption that major equipment (EEG, fMRI, infusion "
     "pumps, monitoring) is <b>borrowed from partner institutions rather than purchased</b>. "
     "Equipment lines therefore cover access, transport, calibration, and consumables only. All "
-    "figures are in USD (Ecuador's currency).", body))
-story.append(Spacer(1, 0.05 * inch))
-story.append(Paragraph(
-    "<b>Two scenarios.</b> Each study is presented as a range. The upper bound is the "
-    "<b>fully-costed</b> figure at market rates. The lower bound is the <b>partnership-leveraged</b> "
-    "figure, which assumes maximal in-kind support: donated equipment and scanner time, clinical "
-    "and academic collaborators contributing as co-investigators, and graduate researchers "
-    "embedding the work within their own theses. The realistic operating budget typically sits "
-    "between the two, since skilled personnel time is the least compressible cost.", body))
+    "figures are in USD (Ecuador's currency). Each study is presented as a range — a "
+    "<b>partnership-leveraged</b> lower bound and a <b>fully-costed</b> upper bound (explained on "
+    "the comparative budget page).", body))
 
 story.append(NextPageTemplate("Content"))
+story.append(PageBreak())
+
+# ---------------------------------------------------------------------------
+# ALIGNMENT WITH THE UNIVERSIDAD DE CUENCA
+# ---------------------------------------------------------------------------
+story.append(Paragraph("Alignment with the Universidad de Cuenca", h1))
+story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
+story.append(Paragraph(
+    "This research agenda is proposed specifically for the <b>Universidad de Cuenca</b>. It is "
+    "designed not merely to sit alongside the University's mission and vision, but to express them. "
+    "We are on the same path.", body))
+
+mv_style = S("mv", fontName="Helvetica", fontSize=9.5, leading=14, textColor=NAVY)
+mv = Table([
+    [Paragraph("<b>Mission · Universidad de Cuenca</b><br/><i>&ldquo;To train researchers and "
+               "professionals committed to a just, diverse and sustainable society, ready to be "
+               "agents of transformation.&rdquo;</i>", mv_style)],
+    [Paragraph("<b>Vision 2027</b><br/><i>&ldquo;By 2027 the Universidad de Cuenca is an innovative "
+               "and resilient university community, integrated with the world through the generation "
+               "of relevant, high-quality knowledge committed to society.&rdquo;</i>", mv_style)],
+], colWidths=[6.7 * inch])
+mv.setStyle(TableStyle([
+    ("BACKGROUND", (0, 0), (-1, -1), LIGHT),
+    ("LINEBEFORE", (0, 0), (0, -1), 3, ACCENT),
+    ("LEFTPADDING", (0, 0), (-1, -1), 12),
+    ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+    ("TOPPADDING", (0, 0), (-1, -1), 8),
+    ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+    ("LINEBELOW", (0, 0), (0, 0), 0.5, colors.white),
+]))
+story.append(Spacer(1, 4))
+story.append(mv)
+story.append(Paragraph("Official mission and vision, Universidad de Cuenca (ucuenca.edu.ec).", small))
+story.append(Spacer(1, 6))
+story.append(Paragraph("How this programme advances both", h2))
+for t, d in [
+    ("Generation of relevant, high-quality knowledge",
+     "Preregistered, publishable studies at the frontier of neuroscience produce exactly the kind "
+     "of original, socially meaningful knowledge the vision calls for."),
+    ("Integrated with the world",
+     "Open-data, internationally collaborative designs connect Cuenca to the global community "
+     "studying consciousness, inviting partnerships across laboratories and disciplines."),
+    ("Agents of transformation",
+     "Training graduate researchers inside a bold yet ethically grounded programme forms precisely "
+     "the transformative scientists the mission describes."),
+    ("Innovative and resilient",
+     "Testing extraordinary claims under clean, falsifiable conditions is innovation done "
+     "responsibly — and resilient, because even a negative result is a genuine contribution."),
+]:
+    story.append(Paragraph(f"<b>{t}.</b> {d}", body))
+
+story.append(Paragraph("Global Impact — Why Studies of This Kind Matter", h1))
+story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
+story.append(Paragraph(
+    "Consciousness remains one of the last great frontiers of science. Studying it rigorously — "
+    "through extended psychedelic states, brain-to-brain paradigms, and the neurophysiology of "
+    "trance — speaks to fundamental questions about mind, brain, and human experience, with "
+    "consequences that reach well beyond any single laboratory.", body))
+for t, d in [
+    ("Mental health",
+     "Extended-state and psychedelic research is already reshaping treatments for depression, PTSD, "
+     "addiction, and end-of-life distress; rigorous local data contributes directly to that global "
+     "effort."),
+    ("A model for how science meets extraordinary claims",
+     "Bringing controversial-but-important questions into the laboratory under preregistration and "
+     "open data shows how science should test bold claims — neither dismissing nor inflating them. "
+     "That methodological example is itself a contribution to scientific culture."),
+    ("Knowledge at the frontier",
+     "A positive result would be a landmark finding; a well-powered null result clarifies the limits "
+     "of these phenomena. Either way the knowledge is new, citable, and field-shaping."),
+    ("Cuenca on the global map",
+     "A university in Ecuador leading careful, ethical consciousness research is a statement that "
+     "frontier science belongs everywhere — drawing collaboration, students, and international "
+     "visibility to the Universidad de Cuenca."),
+]:
+    story.append(Paragraph(f"<b>{t}.</b> {d}", body))
+
 story.append(PageBreak())
 
 # ---------------------------------------------------------------------------
@@ -181,9 +255,10 @@ story.append(PageBreak())
 story.append(Paragraph("Executive Summary", h1))
 story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
 story.append(Paragraph(
-    "This note outlines three candidate experiments that could anchor a university research "
-    "agenda on altered states of consciousness, neurophenomenology, and the scientific study of "
-    "extraordinary human experience. Each is summarised below with a core idea, a proposed design, "
+    "This note outlines three candidate experiments that could anchor a research agenda at the "
+    "Universidad de Cuenca on altered states of consciousness, neurophenomenology, and the "
+    "scientific study of extraordinary human experience. Each is summarised below with a core idea, "
+    "a proposed design, "
     "required infrastructure, ethical considerations, and an indicative budget. A comparative "
     "budget table and a longer pipeline of ten further candidates are included at the end.", body))
 
@@ -599,8 +674,8 @@ story.append(pl)
 story.append(Spacer(1, 0.2 * inch))
 story.append(HRFlowable(width="100%", thickness=0.6, color=RULE, spaceAfter=6))
 story.append(Paragraph(
-    "Prepared by Ney Torres · 23 June 2026 · Draft concept note for discussion with university "
-    "partners. All budget figures are indicative and subject to refinement with a host institution.",
+    "Prepared by Ney Torres · 23 June 2026 · Draft concept note for discussion with the Universidad "
+    "de Cuenca. All budget figures are indicative and subject to refinement with the host institution.",
     small))
 
 doc.build(story)

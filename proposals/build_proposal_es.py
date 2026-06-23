@@ -94,7 +94,7 @@ def cover(canvas, doc):
     canvas.setFont("Helvetica-Bold", 11)
     canvas.drawString(0.9 * inch, 10.35 * inch, "NOTA CONCEPTUAL DE INVESTIGACIÓN")
     canvas.setFont("Helvetica", 10)
-    canvas.drawString(0.9 * inch, 10.12 * inch, "Tres experimentos candidatos para replicación universitaria")
+    canvas.drawString(0.9 * inch, 10.12 * inch, "Tres experimentos candidatos para la Universidad de Cuenca")
     canvas.restoreState()
     footer(canvas, doc)
 
@@ -121,16 +121,19 @@ story = []
 # PORTADA
 # ---------------------------------------------------------------------------
 story.append(Spacer(1, 0.35 * inch))
-story.append(Paragraph("Tres experimentos para una<br/>replicación universitaria rigurosa", title_style))
+story.append(Paragraph("Tres experimentos para la<br/>Universidad de Cuenca", title_style))
 story.append(Spacer(1, 0.1 * inch))
-story.append(Paragraph("Una nota conceptual sobre cómo poner a prueba afirmaciones extraordinarias "
-                       "acerca de la consciencia bajo condiciones limpias, éticas, preregistradas y "
-                       "publicables.", subtitle_style))
+story.append(Paragraph("Una nota conceptual sobre estudios de replicación rigurosos, éticos y "
+                       "liderados por la universidad acerca de la consciencia y los estados "
+                       "alterados — propuestos en alineación con la misión y la visión de la "
+                       "Universidad.", subtitle_style))
 story.append(Spacer(1, 0.35 * inch))
 story.append(HRFlowable(width="100%", thickness=1, color=RULE))
 story.append(Spacer(1, 0.18 * inch))
 
 meta_tbl = Table([
+    [Paragraph("<b>Institución</b>", meta_style),
+     Paragraph("Universidad de Cuenca · Cuenca, Ecuador", meta_style)],
     [Paragraph("<b>Preparada para</b>", meta_style), Paragraph("Julie Combs", meta_style)],
     [Paragraph("<b>Preparada por</b>", meta_style), Paragraph("Ney Torres", meta_style)],
     [Paragraph("<b>Fecha</b>", meta_style), Paragraph("23 de junio de 2026", meta_style)],
@@ -161,18 +164,92 @@ story.append(Paragraph(
     "equipamiento principal (EEG, fMRI, bombas de infusión, monitoreo) se "
     "<b>toma prestado de instituciones aliadas en lugar de comprarse</b>. Por lo tanto, las líneas "
     "de equipamiento cubren únicamente acceso, transporte, calibración e insumos. Todas las cifras "
-    "están en USD (la moneda de Ecuador).", body))
-story.append(Spacer(1, 0.05 * inch))
-story.append(Paragraph(
-    "<b>Dos escenarios.</b> Cada estudio se presenta como un rango. El límite superior es la cifra "
-    "con <b>costos completos</b> a precios de mercado. El límite inferior es la cifra "
-    "<b>apalancada por alianzas</b>, que asume el máximo apoyo en especie: equipamiento y tiempo de "
-    "escáner donados, colaboradores clínicos y académicos que participan como coinvestigadores, e "
-    "investigadores de posgrado que integran el trabajo dentro de sus propias tesis. El presupuesto "
-    "operativo realista suele ubicarse entre ambos, ya que el tiempo del personal calificado es el "
-    "costo menos comprimible.", body))
+    "están en USD (la moneda de Ecuador). Cada estudio se presenta como un rango — un límite "
+    "inferior <b>apalancado por alianzas</b> y un límite superior con <b>costos completos</b> "
+    "(explicado en la página de presupuesto comparativo).", body))
 
 story.append(NextPageTemplate("Content"))
+story.append(PageBreak())
+
+# ---------------------------------------------------------------------------
+# ALINEACIÓN CON LA UNIVERSIDAD DE CUENCA
+# ---------------------------------------------------------------------------
+story.append(Paragraph("Alineación con la Universidad de Cuenca", h1))
+story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
+story.append(Paragraph(
+    "Esta agenda de investigación se propone específicamente para la <b>Universidad de Cuenca</b>. "
+    "Está diseñada no solo para acompañar la misión y la visión de la Universidad, sino para "
+    "expresarlas. Estamos en el mismo camino.", body))
+
+mv_style = S("mv", fontName="Helvetica", fontSize=9.5, leading=14, textColor=NAVY)
+mv = Table([
+    [Paragraph("<b>Misión · Universidad de Cuenca</b><br/><i>&ldquo;Formar investigadores y "
+               "profesionales comprometidos con una sociedad justa, diversa y sostenible, dispuestos "
+               "a ser agentes de transformación.&rdquo;</i>", mv_style)],
+    [Paragraph("<b>Visión 2027</b><br/><i>&ldquo;Al 2027 la Universidad de Cuenca es una comunidad "
+               "universitaria innovadora y resiliente, integrada al mundo a través de la generación "
+               "de conocimiento pertinente, de calidad y comprometida con la sociedad.&rdquo;</i>", mv_style)],
+], colWidths=[6.7 * inch])
+mv.setStyle(TableStyle([
+    ("BACKGROUND", (0, 0), (-1, -1), LIGHT),
+    ("LINEBEFORE", (0, 0), (0, -1), 3, ACCENT),
+    ("LEFTPADDING", (0, 0), (-1, -1), 12),
+    ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+    ("TOPPADDING", (0, 0), (-1, -1), 8),
+    ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+    ("LINEBELOW", (0, 0), (0, 0), 0.5, colors.white),
+]))
+story.append(Spacer(1, 4))
+story.append(mv)
+story.append(Paragraph("Misión y visión oficiales de la Universidad de Cuenca (ucuenca.edu.ec).", small))
+story.append(Spacer(1, 6))
+story.append(Paragraph("Cómo este programa impulsa ambas", h2))
+for t, d in [
+    ("Generación de conocimiento pertinente y de calidad",
+     "Estudios preregistrados y publicables en la frontera de la neurociencia producen exactamente "
+     "el tipo de conocimiento original y socialmente significativo que plantea la visión."),
+    ("Integrada al mundo",
+     "Diseños de datos abiertos y de colaboración internacional conectan a Cuenca con la comunidad "
+     "global que estudia la consciencia, invitando a alianzas entre laboratorios y disciplinas."),
+    ("Agentes de transformación",
+     "Formar investigadores de posgrado dentro de un programa audaz pero éticamente fundamentado "
+     "moldea precisamente a los científicos transformadores que describe la misión."),
+    ("Innovadora y resiliente",
+     "Poner a prueba afirmaciones extraordinarias bajo condiciones limpias y falsables es innovación "
+     "hecha con responsabilidad — y resiliente, porque incluso un resultado negativo es una "
+     "contribución genuina."),
+]:
+    story.append(Paragraph(f"<b>{t}.</b> {d}", body))
+
+story.append(Paragraph("Impacto global — Por qué importan los estudios de esta índole", h1))
+story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
+story.append(Paragraph(
+    "La consciencia sigue siendo una de las últimas grandes fronteras de la ciencia. Estudiarla con "
+    "rigor —a través de estados psicodélicos extendidos, paradigmas cerebro a cerebro y la "
+    "neurofisiología del trance— aborda preguntas fundamentales sobre la mente, el cerebro y la "
+    "experiencia humana, con consecuencias que trascienden por mucho cualquier laboratorio "
+    "individual.", body))
+for t, d in [
+    ("Salud mental",
+     "La investigación de estados extendidos y psicodélicos ya está transformando los tratamientos "
+     "para la depresión, el TEPT, las adicciones y el sufrimiento al final de la vida; datos locales "
+     "rigurosos contribuyen directamente a ese esfuerzo global."),
+    ("Un modelo de cómo la ciencia aborda lo extraordinario",
+     "Llevar al laboratorio preguntas controvertidas pero importantes, bajo preregistro y datos "
+     "abiertos, muestra cómo la ciencia debería poner a prueba afirmaciones audaces — sin "
+     "descartarlas ni exagerarlas. Ese ejemplo metodológico es en sí mismo una contribución a la "
+     "cultura científica."),
+    ("Conocimiento en la frontera",
+     "Un resultado positivo sería un hallazgo de referencia; un resultado nulo con potencia adecuada "
+     "aclara los límites de estos fenómenos. En ambos casos, el conocimiento es nuevo, citable y "
+     "capaz de dar forma al campo."),
+    ("Cuenca en el mapa global",
+     "Que una universidad de Ecuador lidere una investigación cuidadosa y ética sobre la consciencia "
+     "es una declaración de que la ciencia de frontera puede hacerse en cualquier lugar — atrayendo "
+     "colaboración, estudiantes y visibilidad internacional para la Universidad de Cuenca."),
+]:
+    story.append(Paragraph(f"<b>{t}.</b> {d}", body))
+
 story.append(PageBreak())
 
 # ---------------------------------------------------------------------------
@@ -182,8 +259,9 @@ story.append(Paragraph("Resumen ejecutivo", h1))
 story.append(HRFlowable(width="100%", thickness=1.2, color=ACCENT, spaceAfter=8))
 story.append(Paragraph(
     "Esta nota describe tres experimentos candidatos que podrían anclar una agenda de investigación "
-    "universitaria sobre estados alterados de consciencia, neurofenomenología y el estudio "
-    "científico de la experiencia humana extraordinaria. Cada uno se resume a continuación con una "
+    "en la Universidad de Cuenca sobre estados alterados de consciencia, neurofenomenología y el "
+    "estudio científico de la experiencia humana extraordinaria. Cada uno se resume a continuación "
+    "con una "
     "idea central, un diseño propuesto, la infraestructura requerida, consideraciones éticas y un "
     "presupuesto indicativo. Al final se incluyen una tabla comparativa de presupuestos y una "
     "cartera más amplia de diez candidatos adicionales.", body))
@@ -613,8 +691,8 @@ story.append(Spacer(1, 0.2 * inch))
 story.append(HRFlowable(width="100%", thickness=0.6, color=RULE, spaceAfter=6))
 story.append(Paragraph(
     "Preparada por Ney Torres · 23 de junio de 2026 · Borrador de nota conceptual para discusión "
-    "con socios universitarios. Todas las cifras presupuestarias son indicativas y están sujetas a "
-    "refinamiento con una institución anfitriona.", small))
+    "con la Universidad de Cuenca. Todas las cifras presupuestarias son indicativas y están sujetas "
+    "a refinamiento con la institución anfitriona.", small))
 
 doc.build(story)
 print("WROTE", OUTPUT)
