@@ -5,10 +5,13 @@ for rough proposals and general budgets to share with university partners.
 
 ## Contents
 
-- **`Three_Experiments_Concept_Note.pdf`** — formatted concept note (cover page,
-  per-experiment proposals, comparative budget table, references). This is the
-  document to attach when replying to Julie.
-- **`build_proposal.py`** — ReportLab script that generates the PDF.
+- **`Three_Experiments_Concept_Note.pdf`** — formatted concept note in **English**
+  (cover page, per-experiment proposals, comparative budget table, references).
+- **`Tres_Experimentos_Nota_Conceptual.pdf`** — the same concept note in **Spanish**.
+- **`build_proposal.py`** — ReportLab script that generates the English PDF.
+- **`build_proposal_es.py`** — ReportLab script that generates the Spanish PDF.
+
+Both PDFs are the documents to attach when replying to Julie.
 
 ## The three priority studies
 
@@ -30,5 +33,6 @@ transport, calibration, and consumables only. Combined programme: **$155k – $2
 
 ```bash
 pip install reportlab
-python3 proposals/build_proposal.py
+python3 proposals/build_proposal.py     # English
+python3 proposals/build_proposal_es.py  # Spanish
 ```

@@ -136,7 +136,7 @@ story.append(Spacer(1, 0.18 * inch))
 meta_tbl = Table([
     [Paragraph("<b>Prepared for</b>", meta_style), Paragraph("Julie Combs", meta_style)],
     [Paragraph("<b>Prepared by</b>", meta_style), Paragraph("Ney Torres", meta_style)],
-    [Paragraph("<b>Date</b>", meta_style), Paragraph("22 June 2026", meta_style)],
+    [Paragraph("<b>Date</b>", meta_style), Paragraph("23 June 2026", meta_style)],
     [Paragraph("<b>Purpose</b>", meta_style),
      Paragraph("Rough proposals and indicative budgets to support early "
                "conversations with university partners.", meta_style)],
@@ -341,8 +341,8 @@ proposal(
         "Controlled-substance storage and chain-of-custody",
     ],
     [
-        "Schedule I / controlled-substance licensing and import permits",
-        "Full IRB / research-ethics board review",
+        "Controlled-substance licensing and import permits (Ecuadorian regulation)",
+        "Full research-ethics board (IRB) review",
         "On-site physician and resuscitation capability",
         "Rigorous screening; cardiac and psychiatric exclusions",
         "Trained psychological support and integration",
@@ -599,7 +599,7 @@ story.append(pl)
 story.append(Spacer(1, 0.2 * inch))
 story.append(HRFlowable(width="100%", thickness=0.6, color=RULE, spaceAfter=6))
 story.append(Paragraph(
-    "Prepared by Ney Torres · 22 June 2026 · Draft concept note for discussion with university "
+    "Prepared by Ney Torres · 23 June 2026 · Draft concept note for discussion with university "
     "partners. All budget figures are indicative and subject to refinement with a host institution.",
     small))
 
